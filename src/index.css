@@ -20,72 +20,75 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --background: #FDFCFD;
-  --foreground: #211F26;
-  --card: #FDFCFD;
-  --card-foreground: #211F26;
-  --popover: #FDFCFD;
-  --popover-foreground: #211F26;
-  --primary: #8145B5;
-  --primary-foreground: #FEFCFE;
-  --secondary: #F2EFF3;
-  --secondary-foreground: #211F26;
-  --muted: #F2EFF3;
-  --muted-foreground: #65636D;
-  --accent: #EAE7EC;
-  --accent-foreground: #211F26;
+  --background: #FDFCFD; /* mauveLight.50 */
+  --foreground: #211F26; /* mauveLight.1000 */
+  --card: #FDFCFD; /* mauveLight.50 */
+  --card-foreground: #211F26; /* mauveLight.1000 */
+  --popover: #FDFCFD; /* mauveLight.50 */
+  --popover-foreground: #211F26; /* mauveLight.1000 */
+  --primary: #8145B5; /* purpleLight.950 */
+  --primary-foreground: #FEFCFE; /* purpleLight.50 */
+  --secondary: #F2EFF3; /* mauveLight.200 */
+  --secondary-foreground: #211F26; /* mauveLight.1000 */
+  --muted: #F2EFF3; /* mauveLight.200 */
+  --muted-foreground: #65636D; /* mauveLight.950 */
+  --accent: #EAE7EC; /* mauveLight.300 */
+  --accent-foreground: #211F26; /* mauveLight.1000 */
   --destructive: #ef4444;
-  --destructive-foreground: #FDFCFD;
-  --border: #E3DFE6;
-  --input: #EAE7EC;
-  --ring: #8145B5;
-  
+  --destructive-foreground: #FDFCFD; /* mauveLight.50 */
+  --border: #E3DFE6; /* mauveLight.400 */
+  --input: #EAE7EC; /* mauveLight.300 */
+  --ring: #8145B5; /* purpleLight.950 */
+  --theme: rgba(183, 68, 247, 0.08); /* purpleDarkAlpha.100 */
+
   color-scheme: light;
 }
 
 .dark {
-  --background: #121113;
-  --foreground: #EEEEF0;
-  --card: #1A191B;
-  --card-foreground: #EEEEF0;
-  --popover: #1A191B;
-  --popover-foreground: #EEEEF0;
-  --primary: #9A5CD0;
-  --primary-foreground: #18111B;
-  --secondary: #232225;
-  --secondary-foreground: #EEEEF0;
-  --muted: #232225;
-  --muted-foreground: #7C7A85;
-  --accent: #2B292D;
-  --accent-foreground: #EEEEF0;
+  --background: #121113; /* mauveDark.50 */
+  --foreground: #EEEEF0; /* mauveDark.1000 */
+  --card: #1A191B; /* mauveDark.100 */
+  --card-foreground: #EEEEF0; /* mauveDark.1000 */
+  --popover: #1A191B; /* mauveDark.100 */
+  --popover-foreground: #EEEEF0; /* mauveDark.1000 */
+  --primary: #8E4EC6; /* purpleDark.800 */
+  --primary-foreground: #18111B; /* purpleDark.50 */
+  --secondary: #232225; /* mauveDark.200 */
+  --secondary-foreground: #EEEEF0; /* mauveDark.1000 */
+  --muted: #232225; /* mauveDark.200 */
+  --muted-foreground: #7C7A85; /* mauveDark.900 */
+  --accent: #2B292D; /* mauveDark.300 */
+  --accent-foreground: #EEEEF0; /* mauveDark.1000 */
   --destructive: #ef4444;
-  --destructive-foreground: #EEEEF0;
-  --border: #323035;
-  --input: #2B292D;
-  --ring: #9A5CD0;
+  --destructive-foreground: #EEEEF0; /* mauveDark.1000 */
+  --border: #323035; /* mauveDark.400 */
+  --input: #2B292D; /* mauveDark.300 */
+  --ring: #9A5CD0; /* purpleDark.900 */
+  --theme: rgba(183, 68, 247, 0.08); /* purpleDarkAlpha.100 */
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
-    --background: #121113;
-    --foreground: #EEEEF0;
-    --card: #1A191B;
-    --card-foreground: #EEEEF0;
-    --popover: #1A191B;
-    --popover-foreground: #EEEEF0;
-    --primary: #9A5CD0;
-    --primary-foreground: #18111B;
-    --secondary: #232225;
-    --secondary-foreground: #EEEEF0;
-    --muted: #232225;
-    --muted-foreground: #7C7A85;
-    --accent: #2B292D;  
-    --accent-foreground: #EEEEF0;
+    --background: #121113; /* mauveDark.50 */
+    --foreground: #EEEEF0; /* mauveDark.1000 */
+    --card: #1A191B; /* mauveDark.100 */
+    --card-foreground: #EEEEF0; /* mauveDark.1000 */
+    --popover: #1A191B; /* mauveDark.100 */
+    --popover-foreground: #EEEEF0; /* mauveDark.1000 */
+    --primary: #8E4EC6; /* purpleDark.800 */
+    --primary-foreground: #18111B; /* purpleDark.50 */
+    --secondary: #232225; /* mauveDark.200 */
+    --secondary-foreground: #EEEEF0; /* mauveDark.1000 */
+    --muted: #232225; /* mauveDark.200 */
+    --muted-foreground: #7C7A85; /* mauveDark.900 */
+    --accent: #2B292D; /* mauveDark.300 */
+    --accent-foreground: #EEEEF0; /* mauveDark.1000 */
     --destructive: #ef4444;
-    --destructive-foreground: #EEEEF0;
-    --border: #323035;
-    --input: #2B292D;
-    --ring: #9A5CD0;
+    --destructive-foreground: #EEEEF0; /* mauveDark.1000 */
+    --border: #323035; /* mauveDark.400 */
+    --input: #2B292D; /* mauveDark.300 */
+    --ring: #9A5CD0; /* purpleDark.900 */
+    --theme: rgba(183, 68, 247, 0.08); /* purpleDarkAlpha.100 */
   }
 }
 
@@ -99,6 +102,35 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
+  background: none;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0.7) 30%,
+      rgba(0,0,0,0.95) 80%,
+      var(--background) 100%
+    ),
+    url('/src/assets/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  filter: grayscale(1);
+}
+
+@media print {
+  body::before {
+    display: none !important;
+  }
 }
 
 :focus-visible {
@@ -111,9 +143,9 @@ body {
   outline: none;
 }
 
-input, 
-textarea, 
-select, 
+input,
+textarea,
+select,
 button {
   font-family: inherit;
   font-size: inherit;
@@ -138,9 +170,12 @@ button {
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
@@ -150,6 +185,7 @@ button {
   0% {
     background-position: -200px 0;
   }
+
   100% {
     background-position: calc(200px + 100%) 0;
   }
@@ -161,12 +197,10 @@ button {
 
 .animate-shimmer {
   animation: shimmer 1.5s ease-in-out infinite;
-  background: linear-gradient(
-    90deg,
-    var(--muted) 25%,
-    var(--border) 50%,
-    var(--muted) 75%
-  );
+  background: linear-gradient(90deg,
+      var(--muted) 25%,
+      var(--border) 50%,
+      var(--muted) 75%);
   background-size: 200px 100%;
 }
 
@@ -188,11 +222,9 @@ button {
 }
 
 .bg-gradient-fade {
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(0, 0, 0, 0.6) 100%
-  );
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.6) 100%);
 }
 
 .transform-gpu {
@@ -208,9 +240,19 @@ button {
     box-shadow: none !important;
     text-shadow: none !important;
   }
-  
+
   body {
     font-size: 12pt;
     line-height: 1.4;
   }
+}
+
+.inter {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+}
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
 }

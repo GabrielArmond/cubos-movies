@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -7,7 +7,7 @@ export default {
     colors: {
       purpleDark: {
         50: '#18111B',
-        100: '#1E1523', 
+        100: '#1E1523',
         200: '#3D224E',
         300: '#3D224E',
         400: '#48295C',
@@ -17,7 +17,7 @@ export default {
         800: '#8E4EC6',
         900: '#9A5CD0',
         950: '#D19DFF',
-        1000: '#ECD9FA'
+        1000: '#ECD9FA',
       },
       purpleDarkAlpha: {
         50: 'rgba(180, 18, 249, 0.04)',
@@ -31,7 +31,7 @@ export default {
         800: 'rgba(182, 97, 255, 0.76)',
         900: 'rgba(188, 111, 255, 0.8)',
         950: 'rgba(209, 157, 255, 1)',
-        1000: 'rgba(241, 221, 255, 0.98)'
+        1000: 'rgba(241, 221, 255, 0.98)',
       },
       purpleLight: {
         50: '#FEFCFE',
@@ -45,7 +45,7 @@ export default {
         800: '#8E4EC6',
         900: '#8347B9',
         950: '#8145B5',
-        1000: '#402060'
+        1000: '#402060',
       },
       purpleLightAlpha: {
         50: 'rgba(170, 0, 170, 0.01)',
@@ -59,7 +59,7 @@ export default {
         800: 'rgba(92, 0, 173, 0.69)',
         900: 'rgba(83, 0, 158, 0.72)',
         950: 'rgba(82, 0, 154, 0.73)',
-        1000: 'rgba(37, 0, 73, 0.87)'
+        1000: 'rgba(37, 0, 73, 0.87)',
       },
       mauveDark: {
         50: '#121113',
@@ -73,9 +73,9 @@ export default {
         800: '#6F6D78',
         900: '#7C7A85',
         950: '#B5B2BC',
-        1000: '#EEEEF0'
+        1000: '#EEEEF0',
       },
-       mauveDarkAlpha: {
+      mauveDarkAlpha: {
         50: 'rgba(0, 0, 0, 0)',
         100: 'rgba(245, 244, 246, 0.04)',
         200: 'rgba(235, 234, 248, 0.08)',
@@ -87,7 +87,7 @@ export default {
         800: 'rgba(234, 230, 253, 0.43)',
         900: 'rgba(236, 233, 253, 0.49)',
         950: 'rgba(245, 241, 255, 0.72)',
-        1000: 'rgba(253, 253, 255, 0.94)'
+        1000: 'rgba(253, 253, 255, 0.94)',
       },
       mauveLight: {
         50: '#FDFCFD',
@@ -101,7 +101,7 @@ export default {
         800: '#8E8C99',
         900: '#84828E',
         950: '#65636D',
-        1000: '#211F26'
+        1000: '#211F26',
       },
       mauveLightAlpha: {
         50: 'rgba(85, 0, 85, 0.01)',
@@ -115,7 +115,7 @@ export default {
         800: 'rgba(5, 0, 29, 0.45)',
         900: 'rgba(5, 0, 25, 0.49)',
         950: 'rgba(4, 0, 17, 0.61)',
-        1000: 'rgba(2, 0, 8, 0.88)'
+        1000: 'rgba(2, 0, 8, 0.88)',
       },
       success: {
         500: '#22c55e',
@@ -135,12 +135,7 @@ export default {
       current: 'currentColor',
     },
     fontFamily: {
-      sans: [
-        'Roboto',
-        'ui-sans-serif',
-        'system-ui',
-        'sans-serif',
-      ],
+      sans: ['Roboto', 'ui-sans-serif', 'system-ui', 'sans-serif'],
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],
@@ -159,27 +154,43 @@ export default {
     },
     extend: {
       backgroundColor: {
-        'background': 'var(--background)',
-        'foreground': 'var(--foreground)',
-        'card': 'var(--card)',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        card: 'var(--card)',
         'card-foreground': 'var(--card-foreground)',
-        'popover': 'var(--popover)',
+        popover: 'var(--popover)',
         'popover-foreground': 'var(--popover-foreground)',
-        'muted': 'var(--muted)',
+        primary: 'var(--primary)',
+        'primary-foreground': 'var(--primary-foreground)',
+        secondary: 'var(--secondary)',
+        'secondary-foreground': 'var(--secondary-foreground)',
+        muted: 'var(--muted)',
         'muted-foreground': 'var(--muted-foreground)',
-        'accent': 'var(--accent)',
+        accent: 'var(--accent)',
         'accent-foreground': 'var(--accent-foreground)',
-        'border': 'var(--border)',
+        destructive: 'var(--destructive)',
+        'destructive-foreground': 'var(--destructive-foreground)',
+        border: 'var(--border)',
+        input: 'var(--input)',
+        ring: 'var(--ring)',
       },
       textColor: {
-        'foreground': 'var(--foreground)',
+        foreground: 'var(--foreground)',
         'card-foreground': 'var(--card-foreground)',
         'popover-foreground': 'var(--popover-foreground)',
+        primary: 'var(--primary)',
+        'primary-foreground': 'var(--primary-foreground)',
+        secondary: 'var(--secondary)',
+        'secondary-foreground': 'var(--secondary-foreground)',
         'muted-foreground': 'var(--muted-foreground)',
         'accent-foreground': 'var(--accent-foreground)',
+        destructive: 'var(--destructive)',
+        'destructive-foreground': 'var(--destructive-foreground)',
       },
       borderColor: {
-        'border': 'var(--border)',
+        border: 'var(--border)',
+        input: 'var(--input)',
+        ring: 'var(--ring)',
       },
       spacing: {
         '18': '4.5rem',
@@ -189,9 +200,9 @@ export default {
         '128': '32rem',
       },
       aspectRatio: {
-        'poster': '2/3',
-        'backdrop': '16/9',
-        'square': '1/1',
+        poster: '2/3',
+        backdrop: '16/9',
+        square: '1/1',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
@@ -213,15 +224,33 @@ export default {
         },
       },
       screens: {
-        'xs': '475px',
+        xs: '475px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        standard: '1366px',
+        '2xl': '1536px',
         '3xl': '1600px',
+        '4xl': '1920px',
+        'mobile-s': '320px',
+        'mobile-m': '375px',
+        'mobile-l': '425px',
+        tablet: '768px',
+        laptop: '1024px',
+        'laptop-l': '1440px',
+        desktop: '1920px',
+        'desktop-xl': '2560px',
+        wide: '1366px',
+        ultrawide: '2560px',
       },
       boxShadow: {
-        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-        'poster': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        card: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        'card-hover':
+          '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        poster: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
       },
     },
   },
   plugins: [],
-} satisfies Config
+} satisfies Config;
