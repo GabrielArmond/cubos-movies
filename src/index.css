@@ -1,0 +1,216 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: 'Roboto', ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  font-variation-settings: normal;
+  line-height: 1.6;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --background: #FDFCFD;
+  --foreground: #211F26;
+  --card: #FDFCFD;
+  --card-foreground: #211F26;
+  --popover: #FDFCFD;
+  --popover-foreground: #211F26;
+  --primary: #8145B5;
+  --primary-foreground: #FEFCFE;
+  --secondary: #F2EFF3;
+  --secondary-foreground: #211F26;
+  --muted: #F2EFF3;
+  --muted-foreground: #65636D;
+  --accent: #EAE7EC;
+  --accent-foreground: #211F26;
+  --destructive: #ef4444;
+  --destructive-foreground: #FDFCFD;
+  --border: #E3DFE6;
+  --input: #EAE7EC;
+  --ring: #8145B5;
+  
+  color-scheme: light;
+}
+
+.dark {
+  --background: #121113;
+  --foreground: #EEEEF0;
+  --card: #1A191B;
+  --card-foreground: #EEEEF0;
+  --popover: #1A191B;
+  --popover-foreground: #EEEEF0;
+  --primary: #9A5CD0;
+  --primary-foreground: #18111B;
+  --secondary: #232225;
+  --secondary-foreground: #EEEEF0;
+  --muted: #232225;
+  --muted-foreground: #7C7A85;
+  --accent: #2B292D;
+  --accent-foreground: #EEEEF0;
+  --destructive: #ef4444;
+  --destructive-foreground: #EEEEF0;
+  --border: #323035;
+  --input: #2B292D;
+  --ring: #9A5CD0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --background: #121113;
+    --foreground: #EEEEF0;
+    --card: #1A191B;
+    --card-foreground: #EEEEF0;
+    --popover: #1A191B;
+    --popover-foreground: #EEEEF0;
+    --primary: #9A5CD0;
+    --primary-foreground: #18111B;
+    --secondary: #232225;
+    --secondary-foreground: #EEEEF0;
+    --muted: #232225;
+    --muted-foreground: #7C7A85;
+    --accent: #2B292D;  
+    --accent-foreground: #EEEEF0;
+    --destructive: #ef4444;
+    --destructive-foreground: #EEEEF0;
+    --border: #323035;
+    --input: #2B292D;
+    --ring: #9A5CD0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Remover outline padrão */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+input, 
+textarea, 
+select, 
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+  background: linear-gradient(
+    90deg,
+    var(--muted) 25%,
+    var(--border) 50%,
+    var(--muted) 75%
+  );
+  background-size: 200px 100%;
+}
+
+.image-fade-in {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-fade-in.loaded {
+  opacity: 1;
+}
+
+.aspect-poster {
+  aspect-ratio: 2/3;
+}
+
+.aspect-backdrop {
+  aspect-ratio: 16/9;
+}
+
+.bg-gradient-fade {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+}
