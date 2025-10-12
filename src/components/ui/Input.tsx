@@ -24,7 +24,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
 
-        <div className="flex items-center w-full border rounded-sm bg-[var(--secondary)]/80 dark:bg-[var(--secondary)]/80 border-[var(--border)] dark:border-[var(--border)] focus-within:ring-2 focus-within:ring-[var(--ring)] focus-within:border-transparent transition-colors duration-200">
+        <div className="flex items-center w-full border rounded-sm bg-[var(--card)] border-[var(--placeholder)] focus-within:ring-2 focus-within:ring-[var(--primary)] focus-within:border-transparent transition-colors duration-200">
           <input
             id={inputId}
             autoComplete={props.autoComplete ?? 'off'}

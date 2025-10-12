@@ -2,14 +2,7 @@ import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import { cn } from '../../utils';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?:
-    | 'primary'
-    | 'secondary'
-    | 'outline'
-    | 'ghost'
-    | 'danger'
-    | 'theme'
-    | 'link';
+  variant?: 'primary' | 'secondary' | 'link';
   size?: 'sm' | 'md' | 'lg';
   loading?: boolean;
   children: ReactNode;
@@ -38,40 +31,19 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       primary: [
-        'bg-[var(--primary)] hover:bg-[var(--primary)]/90 active:bg-[var(--primary)]/80',
+        'bg-[var(--primary)] hover:bg-[var(--primary-hover)] active:bg-[var(--primary-active)]',
         'text-[var(--foreground)] shadow-md hover:shadow-lg',
         'focus-visible:ring-ring',
       ],
       secondary: [
-        'bg-[var(--secondary)] hover:bg-[var(--secondary)]/80 active:bg-[var(--secondary)]/60',
+        'bg-[var(--secondary)] hover:bg-[var(--secondary-hover)] active:bg-[var(--secondary-active)]',
         'text-[var(--secondary-foreground)] shadow-sm hover:shadow-md',
-        'focus-visible:ring-ring',
-      ],
-      outline: [
-        'border-2 border-[var(--border)] hover:border-ring',
-        'bg-transparent hover:bg-accent active:bg-accent/80',
-        'text-[var(--foreground)] hover:text-[var(--accent-foreground)]',
-        'focus-visible:ring-ring',
-      ],
-      ghost: [
-        'bg-transparent hover:bg-accent active:bg-accent/80',
-        'text-[var(--foreground)] hover:text-[var(--accent-foreground)]',
-        'focus-visible:ring-ring',
-      ],
-      danger: [
-        'bg-[var(--destructive)] hover:bg-[var(--destructive)]/90 active:bg-[var(--destructive)]/80',
-        'text-[var(--destructive-foreground)] shadow-md hover:shadow-lg',
-        'focus-visible:ring-ring',
-      ],
-      theme: [
-        'bg-[var(--theme)] hover:bg-[var(--theme)]/90 active:bg-[var(--theme)]/80',
-        'text-[var(--foreground)] shadow-md hover:shadow-lg',
         'focus-visible:ring-ring',
       ],
       link: [
         'bg-transparent border-none shadow-none p-0',
         'text-[var(--primary)] underline underline-offset-2',
-        'hover:text-[var(--primary)]/70 hover:bg-transparent',
+        'hover:text-[var(--primary-hover)] hover:bg-transparent',
         'focus-visible:ring-0',
       ],
     };

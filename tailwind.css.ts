@@ -5,7 +5,7 @@ export default {
   darkMode: 'class',
   theme: {
     colors: {
-      purpleDark: {
+      ppd: {
         50: '#18111B',
         100: '#1E1523',
         200: '#3D224E',
@@ -19,7 +19,7 @@ export default {
         950: '#D19DFF',
         1000: '#ECD9FA',
       },
-      purpleDarkAlpha: {
+      ppda: {
         50: 'rgba(180, 18, 249, 0.04)',
         100: 'rgba(183, 68, 247, 0.08)',
         200: 'rgba(193, 80, 255, 0.18)',
@@ -33,7 +33,7 @@ export default {
         950: 'rgba(209, 157, 255, 1)',
         1000: 'rgba(241, 221, 255, 0.98)',
       },
-      purpleLight: {
+      ppl: {
         50: '#FEFCFE',
         100: '#FBF7FE',
         200: '#F7EDFE',
@@ -47,7 +47,7 @@ export default {
         950: '#8145B5',
         1000: '#402060',
       },
-      purpleLightAlpha: {
+      ppla: {
         50: 'rgba(170, 0, 170, 0.01)',
         100: 'rgba(128, 0, 224, 0.03)',
         200: 'rgba(142, 0, 241, 0.07)',
@@ -61,7 +61,7 @@ export default {
         950: 'rgba(82, 0, 154, 0.73)',
         1000: 'rgba(37, 0, 73, 0.87)',
       },
-      mauveDark: {
+      md: {
         50: '#121113',
         100: '#1A191B',
         200: '#232225',
@@ -75,7 +75,7 @@ export default {
         950: '#B5B2BC',
         1000: '#EEEEF0',
       },
-      mauveDarkAlpha: {
+      mvda: {
         50: 'rgba(0, 0, 0, 0)',
         100: 'rgba(245, 244, 246, 0.04)',
         200: 'rgba(235, 234, 248, 0.08)',
@@ -89,7 +89,7 @@ export default {
         950: 'rgba(245, 241, 255, 0.72)',
         1000: 'rgba(253, 253, 255, 0.94)',
       },
-      mauveLight: {
+      mvl: {
         50: '#FDFCFD',
         100: '#FAF9FB',
         200: '#F2EFF3',
@@ -103,7 +103,7 @@ export default {
         950: '#65636D',
         1000: '#211F26',
       },
-      mauveLightAlpha: {
+      mvla: {
         50: 'rgba(85, 0, 85, 0.01)',
         100: 'rgba(43, 0, 85, 0.02)',
         200: 'rgba(48, 0, 64, 0.06)',

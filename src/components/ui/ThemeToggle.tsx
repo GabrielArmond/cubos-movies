@@ -31,7 +31,12 @@ export const ThemeToggle = () => {
   };
 
   return (
-    <Button variant="theme" size="md" onClick={toggleTheme} className="!px-5">
+    <Button
+      variant="secondary"
+      size="md"
+      onClick={toggleTheme}
+      className="!px-5"
+    >
       {theme === 'dark' ? (
         <img
           src="/src/assets/icons/sun.svg"
