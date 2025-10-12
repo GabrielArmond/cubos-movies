@@ -153,7 +153,7 @@ export default {
       '9xl': ['8rem', { lineHeight: '1' }],
     },
     extend: {
-      backgroundColor: {
+      colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         card: 'var(--card)',
@@ -170,24 +170,6 @@ export default {
         'accent-foreground': 'var(--accent-foreground)',
         destructive: 'var(--destructive)',
         'destructive-foreground': 'var(--destructive-foreground)',
-        border: 'var(--border)',
-        input: 'var(--input)',
-        ring: 'var(--ring)',
-      },
-      textColor: {
-        foreground: 'var(--foreground)',
-        'card-foreground': 'var(--card-foreground)',
-        'popover-foreground': 'var(--popover-foreground)',
-        primary: 'var(--primary)',
-        'primary-foreground': 'var(--primary-foreground)',
-        secondary: 'var(--secondary)',
-        'secondary-foreground': 'var(--secondary-foreground)',
-        'muted-foreground': 'var(--muted-foreground)',
-        'accent-foreground': 'var(--accent-foreground)',
-        destructive: 'var(--destructive)',
-        'destructive-foreground': 'var(--destructive-foreground)',
-      },
-      borderColor: {
         border: 'var(--border)',
         input: 'var(--input)',
         ring: 'var(--ring)',

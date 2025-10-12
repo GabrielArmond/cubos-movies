@@ -1,60 +1,68 @@
-import { forwardRef, type InputHTMLAttributes } from 'react'
-import { cn } from '../../utils'
+import { forwardRef, type InputHTMLAttributes, type ReactNode } from 'react';
+import { cn } from '../../utils';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label?: string
-  error?: string
-  helperText?: string
+  label?: string;
+  error?: string;
+  helperText?: string;
+  autoComplete?: string;
+  icon?: ReactNode;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, label, error, helperText, id, ...props }, ref) => {
-    const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`
+  ({ className, label, error, helperText, id, icon, ...props }, ref) => {
+    const inputId = id || `input-${Math.random().toString(36).substring(2, 9)}`;
 
     return (
-      <div className="space-y-2">
+      <div className="space-y-2 w-full">
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-sm font-medium text-secondary-700 dark:text-secondary-300"
+            className="block text-sm font-medium text-left text-[var(--foreground)] dark:text-[var(--foreground)]"
           >
             {label}
           </label>
         )}
-        
-        <input
-          id={inputId}
-          className={cn(
-            'flex h-10 w-full rounded-lg border px-3 py-2 text-sm',
-            'bg-white dark:bg-secondary-900',
-            'border-secondary-300 dark:border-secondary-700',
-            'text-secondary-900 dark:text-secondary-100',
-            'placeholder:text-secondary-500 dark:placeholder:text-secondary-400',
-            'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent',
-            'disabled:cursor-not-allowed disabled:opacity-50',
-            'transition-colors duration-200',
-            error && 'border-error-500 focus:ring-error-500',
-            className
+
+        <div className="flex items-center w-full border rounded-sm bg-[var(--secondary)]/80 dark:bg-[var(--secondary)]/80 border-[var(--border)] dark:border-[var(--border)] focus-within:ring-2 focus-within:ring-[var(--ring)] focus-within:border-transparent transition-colors duration-200">
+          <input
+            id={inputId}
+            autoComplete={props.autoComplete ?? 'off'}
+            className={cn(
+              'flex-1 h-10 px-4 text-base bg-transparent border-none',
+              'text-[var(--foreground)] dark:text-[var(--foreground)]',
+              'placeholder:text-[var(--placeholder)] dark:placeholder:text-[var(--placeholder)]',
+              'focus:outline-none',
+              'disabled:cursor-not-allowed disabled:opacity-50',
+              className
+            )}
+            ref={ref}
+            {...props}
+          />
+          {icon && (
+            <div className="flex items-center px-3 pointer-events-auto">
+              {icon}
+            </div>
           )}
-          ref={ref}
-          {...props}
-        />
-        
+        </div>
+
         {(error || helperText) && (
           <p
             className={cn(
               'text-xs',
-              error ? 'text-error-600 dark:text-error-400' : 'text-secondary-600 dark:text-secondary-400'
+              error
+                ? 'text-error-600 dark:text-error-400'
+                : 'text-[var(--secondary)]/60 dark:text-[var(--secondary)]/40'
             )}
           >
             {error || helperText}
           </p>
         )}
       </div>
-    )
+    );
   }
-)
+);
 
-Input.displayName = 'Input'
+Input.displayName = 'Input';
 
-export { Input }
+export { Input };

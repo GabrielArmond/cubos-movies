@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 *,
 *::before,
@@ -40,6 +39,7 @@
   --input: #EAE7EC; /* mauveLight.300 */
   --ring: #8145B5; /* purpleLight.950 */
   --theme: rgba(183, 68, 247, 0.08); /* purpleDarkAlpha.100 */
+   --placeholder: #3C393F; /* mauveLight.900 */
 
   color-scheme: light;
 }
@@ -65,6 +65,7 @@
   --input: #2B292D; /* mauveDark.300 */
   --ring: #9A5CD0; /* purpleDark.900 */
   --theme: rgba(183, 68, 247, 0.08); /* purpleDarkAlpha.100 */
+  --placeholder: #3C393F; /* mauveDark.500 */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -89,6 +90,7 @@
     --input: #2B292D; /* mauveDark.300 */
     --ring: #9A5CD0; /* purpleDark.900 */
     --theme: rgba(183, 68, 247, 0.08); /* purpleDarkAlpha.100 */
+     --placeholder: #3C393F; /* mauveDark.500 */
   }
 }
 

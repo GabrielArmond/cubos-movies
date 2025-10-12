@@ -2,7 +2,14 @@ import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import { cn } from '../../utils';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'theme';
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'outline'
+    | 'ghost'
+    | 'danger'
+    | 'theme'
+    | 'link';
   size?: 'sm' | 'md' | 'lg';
   loading?: boolean;
   children: ReactNode;
@@ -22,11 +29,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles = [
-      'inline-flex items-center justify-center gap-2',
+      'inline-flex items-center justify-center gap-2 ',
       'font-medium rounded-[2px] transition-all duration-200',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
       'disabled:pointer-events-none disabled:opacity-50',
-      'transform-gpu active:scale-95',
+      'transform-gpu active:scale-95 cursor-pointer',
     ];
 
     const variants = {
@@ -60,6 +67,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         'bg-[var(--theme)] hover:bg-[var(--theme)]/90 active:bg-[var(--theme)]/80',
         'text-[var(--foreground)] shadow-md hover:shadow-lg',
         'focus-visible:ring-ring',
+      ],
+      link: [
+        'bg-transparent border-none shadow-none p-0',
+        'text-[var(--primary)] underline underline-offset-2',
+        'hover:text-[var(--primary)]/70 hover:bg-transparent',
+        'focus-visible:ring-0',
       ],
     };
 
