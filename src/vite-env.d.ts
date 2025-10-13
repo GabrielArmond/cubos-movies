@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_API_URL: string;
+  readonly VITE_TMDB_IMAGE_URL: string;
 }
 
 interface ImportMeta {

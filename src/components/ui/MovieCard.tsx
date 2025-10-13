@@ -2,19 +2,19 @@ import { CardLoading } from './CardLoading';
 
 interface Props {
   title: string;
-  backdropPath: string | null;
+  posterPath: string | null;
   genres?: string[];
   progress?: number;
 }
 
-export const MovieCard = ({ title, backdropPath, genres, progress }: Props) => {
+export const MovieCard = ({ title, posterPath, genres, progress }: Props) => {
   const genreList = genres ?? [];
 
   return (
     <>
       <div className="group rounded-lg shadow-md overflow-hidden w-full max-w-[183px] h-[281px] lg:w-60 lg:h-[355px] lg:max-w-[260px] lg:max-h-[360px] relative cursor-pointer hover:scale-105 transition-transform duration-200">
         <img
-          src={backdropPath ? backdropPath : 'SEM FOTO'}
+          src={posterPath ? posterPath : ''}
           alt={title}
           className="w-full h-full object-cover"
         />

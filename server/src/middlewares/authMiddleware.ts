@@ -2,13 +2,9 @@ import { PrismaClient } from '@prisma/client';
 import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { JWTPayload } from '../types/express';
+import { asyncHandler } from '../utils/asyncHandler';
 
 const prisma = new PrismaClient();
-
-const asyncHandler =
-  (fn: Function) => (req: Request, res: Response, next: NextFunction) => {
-    Promise.resolve(fn(req, res, next)).catch(next);
-  };
 
 export const protect = asyncHandler(
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {

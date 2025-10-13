@@ -2,7 +2,7 @@ import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import { cn } from '../../utils';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'link';
+  variant?: 'primary' | 'secondary' | 'link' | 'disabled';
   size?: 'sm' | 'md' | 'lg';
   loading?: boolean;
   children: ReactNode;
@@ -45,6 +45,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         'text-[var(--primary)] underline underline-offset-2',
         'hover:text-[var(--primary-hover)] hover:bg-transparent',
         'focus-visible:ring-0',
+      ],
+      disabled: [
+        'bg-[var(--primary-disable)]',
+        'text-[var(--primary-text-disable)] shadow-md',
+        'pointer-events-none',
       ],
     };
 

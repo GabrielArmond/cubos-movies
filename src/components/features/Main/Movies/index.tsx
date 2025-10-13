@@ -1,29 +1,40 @@
+import type { Movie } from '../../../../types';
 import { MovieCard } from '../../../ui/MovieCard';
 import { Pagination } from '../pagination';
+import { LoadingSkeleton } from './loadingSkeleton';
 
 interface Props {
-  movies: any[];
+  movies: Movie[];
+  totalPages?: number;
+  loading?: boolean;
+  handlePageChange: (page: number) => void;
 }
 
-export const MoviesSection = ({ movies }: Props) => {
+export const MoviesSection = ({
+  movies,
+  loading,
+  totalPages,
+  handlePageChange,
+}: Props) => {
+  console.log(movies);
   return (
     <div className="flex flex-col justify-between w-full h-full">
       <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 justify-items-center gap-3 w-full backdrop-blur-sm bg-[var(--background-movies)]/80 rounded-sm px-6 py-8 mt-5">
-        {movies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            title={movie.title}
-            backdropPath={movie.backdropPath}
-            genres={['Ação', 'Aventura']}
-            progress={movie.progress}
-          />
-        ))}
+        {loading ? (
+          <LoadingSkeleton />
+        ) : (
+          movies.map((movie) => (
+            <MovieCard
+              key={movie.id}
+              title={movie.title}
+              posterPath={movie.poster_path}
+              genres={movie.genres}
+            />
+          ))
+        )}
       </section>
       <section className="w-full flex-grow flex items-end justify-center mt-6">
-        <Pagination
-          totalPages={8}
-          onPageChange={(page) => console.log('Change to page:', page)}
-        />
+        <Pagination totalPages={totalPages} onPageChange={handlePageChange} />
       </section>
     </div>
   );
