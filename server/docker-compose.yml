@@ -2,12 +2,13 @@ services:
   api:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     ports:
       - "3000:3000"
-    volumes:
-      - .:/server
-      - /server/node_modules
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/cubosmovies?schema=public
   db:
     image: postgres:18
     restart: always
