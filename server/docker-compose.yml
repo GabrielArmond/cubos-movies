@@ -1,14 +1,14 @@
 services:
-  api:
-    build:
-      context: .
-      dockerfile: dockerfile
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db
-    environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/cubosmovies?schema=public
+  # api:
+  #   build:
+  #     context: .
+  #     dockerfile: dockerfile
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     - DATABASE_URL=postgresql://postgres:docker@db:5432/cubosmovies?schema=public
   db:
     image: postgres:18
     restart: always

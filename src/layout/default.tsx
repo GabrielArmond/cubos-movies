@@ -1,6 +1,6 @@
-import { Footer } from '../features/Footer';
-import { NavBar } from '../features/Navbar';
 import { Outlet } from 'react-router';
+import { NavBar } from '../components/features/Navbar';
+import { Footer } from '../components/features/Footer';
 
 export const DefaultLayout = () => {
   return (
