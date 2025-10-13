@@ -21,9 +21,4 @@ export const authAPI = {
     const response = await api.get('/users/me');
     return response.data;
   },
-
-  testAuth: async (): Promise<any> => {
-    const response = await api.get('/users/test-auth');
-    return response.data;
-  },
 };

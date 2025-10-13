@@ -1,3 +1,3 @@
 export * from './movie';
-export * from './api';
-export * from './register';
+export * from './user';
+export * from './authApi';

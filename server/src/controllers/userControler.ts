@@ -85,15 +85,13 @@ export const loginUser = async (req: Request, res: Response) => {
       token: generateToken(user.id),
     });
   } else {
-    res.status(400);
+    res.status(400).json({ message: 'Invalid credentials' });
     throw new Error('Invalid credentials');
   }
 };
 
 export const getLoggedInUser = async (req: Request, res: Response) => {
   try {
-    console.log('getLoggedInUser - req.user:', req.user); // Debug
-
     if (!req.user) {
       return res.status(401).json({ message: 'User not authenticated' });
     }
@@ -105,8 +103,8 @@ export const getLoggedInUser = async (req: Request, res: Response) => {
         name: true,
         email: true,
         createdAt: true,
-        updatedAt: true
-      }
+        updatedAt: true,
+      },
     });
 
     if (!user) {

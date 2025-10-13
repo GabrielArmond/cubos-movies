@@ -9,15 +9,9 @@ export const handleRegister = async (
   try {
     const response = await authAPI.register({ name, email, password });
 
-    authUtils.saveAuth(response);
-
     return response;
   } catch (error: any) {
-    console.error(
-      'Erro no registro:',
-      error.response?.data?.message || error.message
-    );
-    throw error;
+    throw new Error(error);
   }
 };
 
@@ -29,11 +23,7 @@ export const handleLogin = async (email: string, password: string) => {
 
     return response;
   } catch (error: any) {
-    console.error(
-      'Erro no login:',
-      error.response?.data?.message || error.message
-    );
-    throw error;
+    throw new Error(error);
   }
 };
 
@@ -51,10 +41,6 @@ export const getCurrentUser = async () => {
     const user = await authAPI.getMe();
     return user;
   } catch (error: any) {
-    console.error(
-      'Erro ao obter usuário:',
-      error.response?.data?.message || error.message
-    );
-    throw error;
+    throw new Error(error);
   }
 };
