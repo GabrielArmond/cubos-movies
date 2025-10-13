@@ -1,9 +1,4 @@
-import type {
-  Genre,
-  GenresResponse,
-  Movie,
-  PopularMoviesResponse,
-} from '../types';
+import type { Genre, GenresResponse, Movie, MoviesResponse } from '../types';
 import { tmdbApi } from './tmdbApi';
 
 let genresCache: { [key: number]: string } | null = null;
@@ -32,7 +27,7 @@ const getGenresMap = async (): Promise<{ [key: number]: string }> => {
 
 export const getPopularMovies = async (
   page: number = 1
-): Promise<PopularMoviesResponse> => {
+): Promise<MoviesResponse> => {
   try {
     const [response, genresMap] = await Promise.all([
       tmdbApi.popular(page),
@@ -56,10 +51,21 @@ export const getPopularMovies = async (
 export const searchMovies = async (
   query: string,
   page: number = 1
-): Promise<any> => {
+): Promise<MoviesResponse> => {
   try {
-    const response = await tmdbApi.searchMovies(query, page);
-    return response;
+    const [response, genresMap] = await Promise.all([
+      tmdbApi.searchMovies(query, page),
+      getGenresMap(),
+    ]);
+
+    const dataFormatted = response.results.map((movie: Movie) => ({
+      ...movie,
+      backdrop_path: `${import.meta.env.VITE_TMDB_IMAGE_URL}${movie.backdrop_path}`,
+      poster_path: `${import.meta.env.VITE_TMDB_IMAGE_URL}${movie.poster_path}`,
+      genres: movie.genre_ids.map((id) => genresMap[id]).filter(Boolean),
+    }));
+
+    return { ...response, results: dataFormatted };
   } catch (error) {
     console.error('Error searching movies:', error);
     throw error;

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { GenresResponse, PopularMoviesResponse } from '../../types';
+import type { GenresResponse, MoviesResponse } from '../../types';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000/api',
@@ -9,7 +9,7 @@ const api = axios.create({
 });
 
 export const tmdbApi = {
-  popular: async (page: number = 1): Promise<PopularMoviesResponse> => {
+  popular: async (page: number = 1): Promise<MoviesResponse> => {
     const response = await api.get(`/movies/popular?page=${page}`);
     return response.data;
   },

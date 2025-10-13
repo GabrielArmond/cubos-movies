@@ -2,8 +2,17 @@ import { useState } from 'react';
 import { Button } from '../../ui/Button';
 import { Input } from '../../ui/Input';
 
-export const Filters = () => {
+interface Props {
+  onSearch: (query: string) => void;
+}
+
+export const Filters = ({ onSearch }: Props) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
+
+  const handleSearch = (value: string) => {
+    setSearchTerm(value);
+    onSearch(value);
+  };
 
   return (
     <section className="flex flex-col sm:flex-row items-center justify-center sm:justify-end gap-3">
@@ -18,7 +27,7 @@ export const Filters = () => {
             />
           }
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => handleSearch(e.target.value)}
         />
       </div>
 

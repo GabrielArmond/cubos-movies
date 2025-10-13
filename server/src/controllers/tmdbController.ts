@@ -54,7 +54,7 @@ export const searchMovies = async (req: Request, res: Response) => {
     }
 
     const response = await fetch(
-      `${TMDB_BASE_URL}/search/movie?query=${encodeURIComponent(query as string)}&page=${page}&language=pt-BR`,
+      `${TMDB_BASE_URL}/search/movie?query=${encodeURIComponent(query as string)}&page=${page}&language=pt-BR&include_adult=false`,
       {
         headers: tmdbHeaders,
       },
