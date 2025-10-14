@@ -41,10 +41,6 @@ class GoogleCloudStorageService {
     });
 
     return new Promise((resolve, reject) => {
-      console.log('Uploading to GCS:', {
-        destination,
-        bucket: this.bucketName,
-      });
       blobStream.on('error', (error) => {
         console.error('Erro no upload:', error);
         reject(new Error('Erro ao fazer upload do arquivo'));

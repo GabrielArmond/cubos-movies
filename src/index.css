@@ -70,6 +70,11 @@
   --ring: #8145B5;
   /* purpleLight.950 */
 
+  --muted: #E3DFE6;
+  /* mauveLight.400 */
+  --muted-foreground: #65636D;
+  /* mauveLight.950 */
+
   --placeholder: #3C393F;
   /* mauveLight.900 */
   --background-movies: rgba(48, 0, 64, 0.06);
@@ -126,6 +131,11 @@
   /* mauveDark.300 */
   --ring: #9A5CD0;
   /* purpleDark.900 */
+
+  --muted: #323035;
+  /* mauveDark.400 */
+  --muted-foreground: #B5B2BC;
+  /* mauveDark.950 */
 
   --placeholder: #3C393F;
   /* mauveDark.500 */
@@ -184,6 +194,11 @@
     /* mauveDark.300 */
     --ring: #9A5CD0;
     /* purpleDark.900 */
+
+    --muted: #323035;
+    /* mauveDark.400 */
+    --muted-foreground: #B5B2BC;
+    /* mauveDark.950 */
 
     --placeholder: #3C393F;
     /* mauveDark.500 */
@@ -353,4 +368,8 @@ button {
 .montserrat {
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
+}
+
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }

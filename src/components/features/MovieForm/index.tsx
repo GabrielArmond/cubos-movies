@@ -468,7 +468,7 @@ export const MovieForm: React.FC<MovieFormProps> = ({
 
       <div className="grid grid-cols-1 gap-4">
         <Input
-          label="Orçamento (R$) *"
+          label="Orçamento (USD) *"
           name="budget"
           type="number"
           min="0"
@@ -479,7 +479,7 @@ export const MovieForm: React.FC<MovieFormProps> = ({
         />
 
         <Input
-          label="Receita (R$)*"
+          label="Receita (USD)*"
           name="revenue"
           type="number"
           min="0"

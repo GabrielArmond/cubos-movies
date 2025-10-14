@@ -1,18 +1,29 @@
-import { CardLoading } from './CardLoading';
+import { Link } from 'react-router';
+import { RatingCircle } from './RatingCircle';
 
 interface Props {
+  id: number;
   title: string;
   posterPath: string | null;
   genres?: string[];
-  progress?: number;
+  popularity?: number;
 }
 
-export const MovieCard = ({ title, posterPath, genres, progress }: Props) => {
+export const MovieCard = ({
+  id,
+  title,
+  posterPath,
+  genres,
+  popularity,
+}: Props) => {
   const genreList = genres ?? [];
 
   return (
     <>
-      <div className="group rounded-lg shadow-md overflow-hidden w-full max-w-[183px] h-[281px] lg:w-60 lg:h-[355px] lg:max-w-[260px] lg:max-h-[360px] relative cursor-pointer hover:scale-105 transition-transform duration-200">
+      <Link
+        to={`/movie/${id}`}
+        className="group rounded-lg shadow-md overflow-hidden w-full max-w-[183px] h-[281px] lg:w-60 lg:h-[355px] lg:max-w-[260px] lg:max-h-[360px] relative cursor-pointer hover:scale-105 transition-transform duration-200 block"
+      >
         {posterPath ? (
           <img
             src={posterPath}
@@ -39,9 +50,9 @@ export const MovieCard = ({ title, posterPath, genres, progress }: Props) => {
             </div>
           </div>
         )}
-        {progress && (
+        {popularity && (
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            <CardLoading progress={progress} />
+            <RatingCircle rating={popularity * 10} size={'default'} />
           </div>
         )}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-3 lg:p-4">
@@ -54,7 +65,7 @@ export const MovieCard = ({ title, posterPath, genres, progress }: Props) => {
             </p>
           )}
         </div>
-      </div>
+      </Link>
     </>
   );
 };

@@ -8,6 +8,7 @@ import { Register } from './components/features/Register/index.tsx';
 import { DefaultLayout } from './layout/default.tsx';
 import { UserProvider } from './context/UserContext.tsx';
 import { useAuth } from './hooks/useAuth.ts';
+import { MovieDetailsPage } from './pages/MovieDetailsPage.tsx';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated, isLoading } = useAuth();
@@ -69,6 +70,15 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute>
               <App />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/movie/:id"
+          element={
+            <ProtectedRoute>
+              <MovieDetailsPage />
             </ProtectedRoute>
           }
         />

@@ -54,7 +54,7 @@ export const Main = () => {
         });
 
         setMovies(response.results);
-        setTotalPages(response.total_pages);
+        setTotalPages(response.totalPages);
         setCurrentPage(response.page);
       } catch (error) {
         console.error('Erro ao buscar filmes:', error);
