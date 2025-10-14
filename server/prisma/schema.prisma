@@ -21,3 +21,26 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Movie {
+  id                String   @id @default(cuid())
+  title             String
+  original_title    String
+  original_language String
+  overview          String
+  release_date      String
+  genres            String[]
+  vote_average      Float
+  vote_count        Int
+  popularity        Int
+  poster_path       String
+  backdrop_path     String
+  situation         String
+  duration          Int
+  budget            Int
+  revenue           Int
+  profit            Int
+  trailer           String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}

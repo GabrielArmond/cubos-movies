@@ -4,9 +4,10 @@ import { Input } from '../../ui/Input';
 
 interface Props {
   onSearch: (query: string) => void;
+  onOpenFilters: () => void;
 }
 
-export const Filters = ({ onSearch }: Props) => {
+export const Filters = ({ onSearch, onOpenFilters }: Props) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
   const handleSearch = (value: string) => {
@@ -32,7 +33,11 @@ export const Filters = ({ onSearch }: Props) => {
       </div>
 
       <div className="flex flex-row items-center justify-center gap-2 w-full sm:w-auto">
-        <Button variant="secondary" className="w-32 max-w-40 text-base">
+        <Button
+          variant="secondary"
+          className="w-32 max-w-40 text-base"
+          onClick={onOpenFilters}
+        >
           Filtros
         </Button>
         <Button variant="primary" size="md" className="w-52 max-w-md">

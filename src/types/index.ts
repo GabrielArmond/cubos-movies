@@ -1,3 +1,3 @@
-export * from './tmdb';
+export * from './movies';
 export * from './user';
 export * from './authApi';

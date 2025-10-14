@@ -58,6 +58,11 @@
   --secondary-text-disable: rgba(236, 233, 253, 0.49);
   /* mauveDarkAlpha.900 */
 
+  --dialog-title: #65636D;
+  /* mauveLight.950 */
+  --dialog-background: #F2EFF3;
+  /* mauveLight.200 */
+
   --border: #E3DFE6;
   /* mauveLight.400 */
   --input: #EAE7EC;
@@ -109,6 +114,11 @@
   /* mauveDarkAlpha.200 */
   --secondary-text-disable: rgba(236, 233, 253, 0.49);
   /* mauveDarkAlpha.900 */
+
+  --dialog-title: #B5B2BC;
+  /* mauveDark.950 */
+  --dialog-background: #232225;
+  /* mauveDark.200 */
 
   --border: #323035;
   /* mauveDark.400 */
@@ -162,7 +172,11 @@
     --secondary-disable: rgba(235, 234, 248, 0.08);
     /* mauveDarkAlpha.200 */
     --secondary-text-disable: rgba(236, 233, 253, 0.49);
-    /* mauveDarkAlpha.900 */
+
+    --dialog-title: #B5B2BC;
+    /* mauveDark.950 */
+    --dialog-background: #232225;
+    /* mauveDark.200 */
 
     --border: #323035;
     /* mauveDark.400 */
