@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import { Input } from '../../ui/Input';
+import { formatDate } from '../../../utils';
 
 export type MovieFiltersOption = {
   genre: string;
-  releaseYear: string;
+  startDate: string;
+  endDate: string;
   minRating: string;
-  sortBy: 'popularity' | 'title' | 'release_date' | 'vote_average';
+  minDuration: string;
+  maxDuration: string;
+  sortBy: 'popularity' | 'title' | 'release_date' | 'vote_average' | 'duration';
 };
 
 interface Props {
@@ -17,8 +21,11 @@ export function MovieFilters({ onHandleFilterChange, initialFilters }: Props) {
   const [filters, setFilters] = useState<MovieFiltersOption>(
     initialFilters || {
       genre: '',
-      releaseYear: '',
+      startDate: '',
+      endDate: '',
       minRating: '',
+      minDuration: '',
+      maxDuration: '',
       sortBy: 'popularity',
     }
   );
@@ -57,17 +64,26 @@ export function MovieFilters({ onHandleFilterChange, initialFilters }: Props) {
       </div>
 
       <div>
-        <label className="block text-sm text-left  font-medium text-gray-700 dark:text-gray-300 mb-2">
-          Ano de Lançamento
+        <label className="block text-sm text-left font-medium text-gray-700 dark:text-gray-300 mb-2">
+          Período de Lançamento
         </label>
-        <Input
-          type="number"
-          placeholder="Ex: 2023"
-          value={filters.releaseYear}
-          onChange={(e) => handleFilterChange('releaseYear', e.target.value)}
-          min="1900"
-          max={new Date().getFullYear()}
-        />
+        <div className="flex items-center space-x-3">
+          <Input
+            type="date"
+            value={filters.startDate}
+            onChange={(e) => handleFilterChange('startDate', e.target.value)}
+            className="flex-1"
+            placeholder="Data inicial"
+          />
+          <span className="text-sm text-gray-500 dark:text-gray-400">até</span>
+          <Input
+            type="date"
+            value={filters.endDate}
+            onChange={(e) => handleFilterChange('endDate', e.target.value)}
+            className="flex-1"
+            placeholder="Data final"
+          />
+        </div>
       </div>
 
       <div>
@@ -90,6 +106,34 @@ export function MovieFilters({ onHandleFilterChange, initialFilters }: Props) {
       </div>
 
       <div>
+        <label className="block text-sm text-left font-medium text-gray-700 dark:text-gray-300 mb-2">
+          Duração (minutos)
+        </label>
+        <div className="flex items-center space-x-3">
+          <Input
+            type="number"
+            placeholder="Min"
+            value={filters.minDuration}
+            onChange={(e) => handleFilterChange('minDuration', e.target.value)}
+            min="1"
+            max="999"
+            className="flex-1"
+          />
+          <span className="text-sm text-gray-500 dark:text-gray-400">até</span>
+          <Input
+            type="number"
+            placeholder="Max"
+            value={filters.maxDuration}
+            onChange={(e) => handleFilterChange('maxDuration', e.target.value)}
+            min="1"
+            max="999"
+            className="flex-1"
+          />
+          <span className="text-sm text-gray-500 dark:text-gray-400">min</span>
+        </div>
+      </div>
+
+      <div>
         <label className="block text-sm text-left  font-medium text-gray-700 dark:text-gray-300 mb-2">
           Ordenar por
         </label>
@@ -102,12 +146,16 @@ export function MovieFilters({ onHandleFilterChange, initialFilters }: Props) {
           <option value="release_date">Data de Lançamento</option>
           <option value="vote_average">Melhor Avaliado</option>
           <option value="title">Título (A-Z)</option>
+          <option value="duration">Duração</option>
         </select>
       </div>
 
       {(filters.genre ||
-        filters.releaseYear ||
+        filters.startDate ||
+        filters.endDate ||
         filters.minRating ||
+        filters.minDuration ||
+        filters.maxDuration ||
         filters.sortBy !== 'popularity') && (
         <div className="bg-gray-50 dark:bg-[var(--secondary)] p-4 rounded-lg">
           <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -119,14 +167,25 @@ export function MovieFilters({ onHandleFilterChange, initialFilters }: Props) {
                 Gênero: {filters.genre}
               </span>
             )}
-            {filters.releaseYear && (
+            {(filters.startDate || filters.endDate) && (
               <span className="inline-flex items-center px-2 py-1 text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">
-                Ano: {filters.releaseYear}
+                Período: {formatDate(filters.startDate) || '...'} até{' '}
+                {formatDate(filters.endDate) || '...'}
               </span>
             )}
             {filters.minRating && (
               <span className="inline-flex items-center px-2 py-1 text-xs bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full">
                 Avaliação: {filters.minRating}+
+              </span>
+            )}
+            {filters.minDuration && (
+              <span className="inline-flex items-center px-2 py-1 text-xs bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full">
+                Min: {filters.minDuration}min
+              </span>
+            )}
+            {filters.maxDuration && (
+              <span className="inline-flex items-center px-2 py-1 text-xs bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">
+                Max: {filters.maxDuration}min
               </span>
             )}
             {filters.sortBy !== 'popularity' && (

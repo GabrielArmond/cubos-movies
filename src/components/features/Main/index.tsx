@@ -13,8 +13,11 @@ import MovieForm from '../MovieForm';
 
 const DEFAULT_FILTERS: MovieFiltersOption = {
   genre: '',
-  releaseYear: '',
+  startDate: '',
+  endDate: '',
   minRating: '',
+  minDuration: '',
+  maxDuration: '',
   sortBy: 'popularity',
 };
 
@@ -48,8 +51,11 @@ export const Main = () => {
           page: page,
           search: debouncedSearchTerm || undefined,
           genre: appliedFilters.genre || undefined,
-          releaseYear: appliedFilters.releaseYear || undefined,
+          startDate: appliedFilters.startDate || undefined,
+          endDate: appliedFilters.endDate || undefined,
           minRating: appliedFilters.minRating || undefined,
+          minDuration: appliedFilters.minDuration || undefined,
+          maxDuration: appliedFilters.maxDuration || undefined,
           sortBy: appliedFilters.sortBy,
         });
 

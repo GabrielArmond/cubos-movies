@@ -43,4 +43,5 @@ model Movie {
   trailer           String
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
+  indicative_rating String   @default("L")
 }

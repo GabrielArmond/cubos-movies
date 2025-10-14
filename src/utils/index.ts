@@ -6,7 +6,7 @@ export const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     return new Intl.DateTimeFormat('pt-BR', {
       year: 'numeric',
-      month: 'long',
+      month: 'numeric',
       day: 'numeric',
     }).format(date);
   } catch {

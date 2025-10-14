@@ -4,8 +4,11 @@ import { movieApi } from './moviesApi';
 export const getMovies = async ({
   page = 1,
   genre,
-  releaseYear,
+  startDate,
+  endDate,
   minRating,
+  minDuration,
+  maxDuration,
   sortBy = 'popularity',
   search,
 }: GetMoviesQuery): Promise<MoviesResponse> => {
@@ -13,8 +16,11 @@ export const getMovies = async ({
     const response = await movieApi.getMovies({
       page,
       genre,
-      releaseYear,
+      startDate,
+      endDate,
       minRating,
+      minDuration,
+      maxDuration,
       sortBy,
       search,
     });

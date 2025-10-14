@@ -19,6 +19,7 @@ export interface Movie {
   trailer: string;
   createdAt: Date;
   updatedAt: Date;
+  indicative_rating: string;
 }
 
 export interface MoviesResponse {
@@ -41,9 +42,17 @@ export interface GetMoviesQuery {
   page?: number;
   limit?: string;
   genre?: string;
-  releaseYear?: string;
+  startDate?: string;
+  endDate?: string;
   minRating?: string;
-  sortBy?: 'title' | 'release_date' | 'vote_average' | 'popularity';
+  minDuration?: string;
+  maxDuration?: string;
+  sortBy?:
+    | 'title'
+    | 'release_date'
+    | 'vote_average'
+    | 'popularity'
+    | 'duration';
   search?: string;
 }
 
@@ -64,4 +73,5 @@ export interface MovieDTO {
   budget: number;
   revenue: number;
   trailer?: string;
+  indicative_rating?: string;
 }

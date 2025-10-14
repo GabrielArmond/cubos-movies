@@ -10,8 +10,11 @@ export const movieApi = {
   getMovies: async ({
     page = 1,
     genre,
-    releaseYear,
+    startDate,
+    endDate,
     minRating,
+    minDuration,
+    maxDuration,
     sortBy = 'popularity',
     search,
   }: GetMoviesQuery): Promise<MoviesResponse> => {
@@ -19,8 +22,11 @@ export const movieApi = {
     params.append('page', page.toString());
 
     if (genre) params.append('genre', genre);
-    if (releaseYear) params.append('releaseYear', releaseYear);
+    if (startDate) params.append('startDate', startDate);
+    if (endDate) params.append('endDate', endDate);
     if (minRating) params.append('minRating', minRating);
+    if (minDuration) params.append('minDuration', minDuration);
+    if (maxDuration) params.append('maxDuration', maxDuration);
     if (sortBy) params.append('sortBy', sortBy);
     if (search) params.append('search', search);
 

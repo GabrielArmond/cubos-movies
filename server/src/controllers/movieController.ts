@@ -5,7 +5,6 @@ import {
   GetMoviesQuery,
   Movie,
   MovieDTO,
-  MovieParams,
   MoviesResponse,
 } from '../models/movie';
 
@@ -21,8 +20,11 @@ export const getMovies = async (
       page = 1,
       limit = 10,
       genre,
-      releaseYear,
+      startDate,
+      endDate,
       minRating,
+      minDuration,
+      maxDuration,
       sortBy = 'popularity',
       search,
     } = req.query;
@@ -60,10 +62,16 @@ export const getMovies = async (
       }
     }
 
-    if (releaseYear && typeof releaseYear === 'string') {
-      where.release_date = {
-        startsWith: releaseYear,
-      };
+    if (startDate || endDate) {
+      where.release_date = {};
+
+      if (startDate && typeof startDate === 'string') {
+        where.release_date.gte = startDate;
+      }
+
+      if (endDate && typeof endDate === 'string') {
+        where.release_date.lte = endDate;
+      }
     }
 
     if (minRating && typeof minRating === 'string') {
@@ -71,6 +79,24 @@ export const getMovies = async (
       where.vote_average = {
         gte: rating,
       };
+    }
+
+    if (minDuration || maxDuration) {
+      where.duration = {};
+
+      if (minDuration && typeof minDuration === 'string') {
+        const minDur = parseInt(minDuration, 10);
+        if (!isNaN(minDur)) {
+          where.duration.gte = minDur;
+        }
+      }
+
+      if (maxDuration && typeof maxDuration === 'string') {
+        const maxDur = parseInt(maxDuration, 10);
+        if (!isNaN(maxDur)) {
+          where.duration.lte = maxDur;
+        }
+      }
     }
 
     let orderBy: any = {};
@@ -83,6 +109,9 @@ export const getMovies = async (
         break;
       case 'vote_average':
         orderBy = { vote_average: 'desc' };
+        break;
+      case 'duration':
+        orderBy = { duration: 'desc' };
         break;
       case 'popularity':
       default:
