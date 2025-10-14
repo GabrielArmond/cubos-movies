@@ -1,8 +1,7 @@
-import type { Movie, MovieDTO } from '../../../types/movies';
+import type { Movie, MovieDTO } from '../../../types';
 import { Sidebar } from '../../ui/Sidebar';
 import MovieForm from '../MovieForm';
-import { MovieHeader } from './desktop/MovieHeader';
-import { MovieTrailer } from './MovieTrailer';
+import { MovieDetailsMobileContent } from './mobile/index.tsx';
 
 interface MovieDetailsProps {
   isOpenSidebar: boolean;
@@ -13,7 +12,7 @@ interface MovieDetailsProps {
   onDelete?: () => void;
 }
 
-export const MovieDetailsDesktop = ({
+export const MovieDetailsMobile = ({
   movie,
   isOpenSidebar,
   closeSidebar,
@@ -22,16 +21,13 @@ export const MovieDetailsDesktop = ({
   onSubmitEditMovie,
 }: MovieDetailsProps) => {
   return (
-    <div className="min-h-screen bg-[var(--background)] flex flex-col gap-10">
-      <MovieHeader movie={movie} onEdit={onEdit} onDelete={onDelete} />
+    <>
+      <MovieDetailsMobileContent
+        movie={movie}
+        onEdit={onEdit}
+        onDelete={onDelete}
+      />
 
-      <div className="container mx-auto mt-10">
-        {movie.trailer && (
-          <div className="w-full mx-auto">
-            <MovieTrailer trailerUrl={movie.trailer} title={movie.title} />
-          </div>
-        )}
-      </div>
       <Sidebar
         title="Editar Filme"
         isOpen={isOpenSidebar}
@@ -43,6 +39,6 @@ export const MovieDetailsDesktop = ({
           onSubmit={onSubmitEditMovie}
         />
       </Sidebar>
-    </div>
+    </>
   );
 };

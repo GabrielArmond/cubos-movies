@@ -18,7 +18,7 @@ export const MoviesSection = ({
 }: Props) => {
   return (
     <div className="flex flex-col justify-between w-full h-full">
-      <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 justify-items-center gap-3 w-full backdrop-blur-sm bg-[var(--background-movies)]/80 rounded-sm px-6 py-8 mt-5">
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-items-center gap-3 w-full backdrop-blur-sm bg-[var(--background-movies)]/80 rounded-sm px-6 py-8 mt-5">
         {loading ? (
           <LoadingSkeleton />
         ) : (

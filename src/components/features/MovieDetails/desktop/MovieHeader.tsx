@@ -1,8 +1,8 @@
-import type { Movie } from '../../../types/movies';
-import { formatDate } from '../../../utils';
-import { Button } from '../../ui/Button';
-import { RatingCircle } from '../../ui/RatingCircle';
-import { Card } from './Card';
+import type { Movie } from '../../../../types/movies';
+import { formatCurrency, formatDate, formatDuration } from '../../../../utils';
+import { Button } from '../../../ui/Button';
+import { RatingCircle } from '../../../ui/RatingCircle';
+import { Card } from '../Card';
 
 interface MovieHeaderProps {
   movie: Movie;
@@ -11,24 +11,6 @@ interface MovieHeaderProps {
 }
 
 export const MovieHeader = ({ movie, onEdit, onDelete }: MovieHeaderProps) => {
-  const formatCurrency = (value: number) => {
-    if (value >= 1000000000) {
-      return `$${(value / 1000000000).toFixed(1)}B`;
-    }
-    if (value >= 1000000) {
-      return `$${(value / 1000000).toFixed(2)}M`;
-    }
-    if (value >= 1000) {
-      return `$${(value / 1000).toFixed(1)}K`;
-    }
-    return `$${value}`;
-  };
-
-  const formatDuration = (minutes: number) => {
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
-    return `${hours}h ${mins}min`;
-  };
   return (
     <div className="w-full mx-auto relative">
       <div

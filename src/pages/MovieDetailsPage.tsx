@@ -8,6 +8,7 @@ import {
   updateMovie,
 } from '../services/moviesService';
 import { useSidebar } from '../hooks/useSidebar';
+import { MovieDetailsMobile } from '../components/features/MovieDetails/mobile';
 
 export const MovieDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -21,7 +22,7 @@ export const MovieDetailsPage = () => {
   const { openSidebar, closeSidebar, isOpenSidebar } = useSidebar();
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    const checkMobile = () => setIsMobile(window.innerWidth < 769);
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -119,7 +120,14 @@ export const MovieDetailsPage = () => {
   }
 
   return isMobile ? (
-    <div>isMobile</div>
+    <MovieDetailsMobile
+      isOpenSidebar={isOpenSidebar}
+      closeSidebar={closeSidebar}
+      onSubmitEditMovie={handleSubmitEditMovie}
+      movie={movie}
+      onEdit={handleEdit}
+      onDelete={handleDelete}
+    />
   ) : (
     <MovieDetailsDesktop
       isOpenSidebar={isOpenSidebar}

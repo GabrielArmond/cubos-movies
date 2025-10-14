@@ -163,7 +163,7 @@ export const Main = () => {
           onHandleFilterChange={handleFiltersChange}
           initialFilters={tempFilters}
         />
-        <div className="flex items-center justify-between gap-2 mt-8">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-2 mt-8">
           <Button variant="link" onClick={handleClearFilters}>
             Limpar Filtros
           </Button>
