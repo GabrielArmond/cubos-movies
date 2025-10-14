@@ -1,73 +1,245 @@
-# React + TypeScript + Vite
+# 🎬 Cubos Movies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação full-stack moderna para gerenciamento de filmes, desenvolvida com React, TypeScript, Node.js e PostgreSQL. O projeto permite aos usuários visualizar, adicionar, editar e gerenciar uma coleção de filmes com interface responsiva e autenticação completa.
 
-Currently, two official plugins are available:
+## 📋 Índice
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [🎬 Cubos Movies](#-cubos-movies)
+  - [📋 Índice](#-índice)
+  - [📝 Sobre o Projeto](#-sobre-o-projeto)
+  - [✨ Principais Funcionalidades](#-principais-funcionalidades)
+  - [🏗️ Arquitetura do Projeto](#️-arquitetura-do-projeto)
+  - [🛠️ Tecnologias e Frameworks](#️-tecnologias-e-frameworks)
+    - [Frontend](#frontend)
+    - [Backend](#backend)
+    - [Banco de Dados](#banco-de-dados)
+    - [DevOps e Ferramentas](#devops-e-ferramentas)
+  - [📦 Estrutura do Projeto](#-estrutura-do-projeto)
+  - [🚀 Como Executar o Projeto](#-como-executar-o-projeto)
+    - [Pré-requisitos](#pré-requisitos)
+    - [Configuração do Backend](#configuração-do-backend)
+    - [Configuração do Frontend](#configuração-do-frontend)
+  - [🔧 Scripts Disponíveis](#-scripts-disponíveis)
+  - [🎨 Design System](#-design-system)
+  - [🔒 Autenticação e Segurança](#-autenticação-e-segurança)
+  - [📱 Responsividade](#-responsividade)
+  - [🌐 Deploy](#-deploy)
+  - [🤝 Contribuição](#-contribuição)
 
-## React Compiler
+## 📝 Sobre o Projeto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+O **Cubos Movies** é uma aplicação completa de gerenciamento de filmes que combina uma interface moderna e intuitiva com uma API robusta. O projeto foi desenvolvido seguindo as melhores práticas de desenvolvimento, incluindo arquitetura limpa, tipagem forte, responsividade e segurança.
 
-## Expanding the ESLint configuration
+## ✨ Principais Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Autenticação completa**: Login e registro de usuários com JWT
+- **Gerenciamento de filmes**: CRUD completo (Create, Read, Update, Delete)
+- **Sistema de busca e filtros**: Busca por título, filtros por gênero, data, rating, etc.
+- **Upload de imagens**: Upload de posters e backdrops para Google Cloud Storage
+- **Interface responsiva**: Suporte completo para desktop, tablet e mobile
+- **Tema claro/escuro**: Alternância entre temas com persistência
+- **Paginação**: Navegação eficiente através de grandes listas de filmes
+- **Validação de dados**: Validação tanto no frontend quanto no backend
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🏗️ Arquitetura do Projeto
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+O projeto segue uma arquitetura **Full-Stack** moderna com separação clara entre frontend e backend:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Frontend**: SPA (Single Page Application) com React
+- **Backend**: API RESTful com Node.js e Express
+- **Banco de dados**: PostgreSQL com Prisma ORM
+- **Autenticação**: JWT (JSON Web Tokens)
+- **Upload de arquivos**: Google Cloud Storage
+- **Containerização**: Docker para desenvolvimento
+
+## 🛠️ Tecnologias e Frameworks
+
+### Frontend
+
+- React 19.1.1
+
+- TypeScript 5.9.3
+
+- Vite 7.1.7
+
+- TailwindCSS 4.1.14
+
+- React Router DOM 7.9.4
+
+- Axios 1.12.2
+
+### Backend
+
+- Node.js com Express 5.1.0
+
+- Prisma 6.17.1
+
+- **Por que usar**: ORM (Object-Relational Mapping) de próxima geração
+- **Benefícios**:
+  - Schema declarativo
+  - Query builder intuitivo
+  - Excelente DX (Developer Experience) com Prisma Studio
+  - Fácil implementação
+  - Suporte a múltiplos bancos de dados
+
+- JSON Web Tokens (JWT)
+
+- Multer 2.0.2
+
+- BCrypt.js 3.0.2
+
+### Banco de Dados
+
+- PostgreSQL 18
+
+### DevOps e Ferramentas
+
+- Docker & Docker Compose
+
+- ESLint 9.36.0
+
+- Prettier 3.6.2
+
+- Google Cloud Storage
+
+## 📦 Estrutura do Projeto
+
+```
+cubos-movies/
+├── src/                          # Frontend React
+│   ├── components/              # Componentes React
+│   │   ├── features/           # Componentes de funcionalidades
+│   │   └── ui/                # Componentes de interface básicos
+│   ├── hooks/                  # Custom hooks
+│   ├── services/              # Serviços de API
+│   ├── types/                 # Definições TypeScript
+│   ├── pages/                 # Páginas do projeto
+│   ├── utils/                 # Funções utilitárias
+│   └── context/               # Context providers
+├── server/                     # Backend Node.js
+│   ├── src/
+│   │   ├── controllers/       # Controladores das rotas
+│   │   ├── middlewares/       # Middlewares personalizados
+│   │   ├── models/           # Modelos de dados
+│   │   ├── routes/           # Definições das rotas
+│   │   ├── services/         # Serviços de negócio
+│   │   └── utils/            # Utilitários do backend
+│   └── prisma/               # Schema e migrações do banco
+└── docs/                      # Documentação do projeto
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Como Executar o Projeto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Pré-requisitos
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js 22+
+- Docker e Docker Compose
+- Git
+
+### Configuração do Backend
+
+1. **Clone o repositório**
+
+```bash
+git clone https://github.com/GabrielArmond/cubos-movies.git
+cd cubos-movies
 ```
+
+2. **Configure o banco de dados**
+
+```bash
+cd server
+docker-compose up -d  # Inicia PostgreSQL
+```
+
+3. **Configure as variáveis de ambiente**
+
+```bash
+# server/.env
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/cubosmovies?schema=public"
+JWT_SECRET="seu-jwt-secret-super-seguro"
+GOOGLE_CLOUD_PROJECT_ID="seu-project-id"
+GOOGLE_CLOUD_KEY_FILE="caminho-para-service-account.json"
+GOOGLE_CLOUD_BUCKET_NAME="seu-bucket-name"
+```
+
+4. **Instale dependências e execute migrações**
+
+```bash
+npm install
+npx prisma migrate dev
+npm run dev  # Servidor rodando em http://localhost:3000
+```
+
+### Configuração do Frontend
+
+1. **Instale dependências**
+
+```bash
+cd ../  # Volta para raiz
+npm install
+```
+
+2. **Execute o frontend**
+
+```bash
+npm run dev  # Frontend rodando em http://localhost:8080
+```
+
+3. **Configure as variáveis de ambiente**
+
+```bash
+# .env
+PORT=3000
+NODE_ENV=development
+
+VITE_API_URL=http://localhost:3000/api
+```
+
+## 🔧 Scripts Disponíveis
+
+### Frontend
+
+- `npm run dev` - Inicia servidor de desenvolvimento
+- `npm run build` - Build para produção
+- `npm run preview` - Preview do build de produção
+- `npm run lint` - Executa linting
+
+### Backend
+
+- `npm run dev` - Inicia servidor com hot reload
+- `npm run build` - Compila TypeScript
+- `npm start` - Inicia servidor de produção
+- `npx prisma studio` - Interface visual do banco de dados
+- `npx prisma migrate dev` - Executa migrações
+
+## 🎨 Design System
+
+O projeto utiliza um design system customizado construído sobre TailwindCSS:
+
+- **Paleta de cores**: Sistema de cores personalizado com suporte a tema claro/escuro
+- **Tipografia**: Fonte Roboto, Inter e Montserrat
+- **Componentes**: Biblioteca de componentes reutilizáveis (Button, Input, Card, etc.)
+- **Responsividade**: Breakpoints customizados para diferentes dispositivos
+- **Animações**: Animações suaves com CSS transitions e keyframes
+
+## 🔒 Autenticação e Segurança
+
+- **JWT**: Tokens seguros para autenticação stateless
+- **Bcrypt**: Hash de senhas com salt automático
+- **Rotas protegidas**: Middleware de autenticação no backend
+- **Validação**: Validação de dados tanto no frontend quanto backend
+- **CORS**: Configuração adequada para requisições cross-origin
+- **Sanitização**: Limpeza de dados de entrada
+
+## 📱 Responsividade
+
+O projeto é totalmente responsivo com suporte a:
+
+- **Mobile First**: Design prioritário para dispositivos móveis
+- **Grid System**: Layout flexível com CSS Grid e Flexbox
+- **Breakpoints**: Pontos de quebra customizados
+- **Componentes Adaptativos**: Componentes que se adaptam ao tamanho da tela
+- **Touch Friendly**: Interface otimizada para touch
+
+**Desenvolvido por [Gabriel Guerra](https://github.com/GabrielArmond)**
