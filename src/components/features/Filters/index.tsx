@@ -5,9 +5,10 @@ import { Input } from '../../ui/Input';
 interface Props {
   onSearch: (query: string) => void;
   onOpenFilters: () => void;
+  onOpenAddMovie: () => void;
 }
 
-export const Filters = ({ onSearch, onOpenFilters }: Props) => {
+export const Filters = ({ onSearch, onOpenFilters, onOpenAddMovie }: Props) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
   const handleSearch = (value: string) => {
@@ -40,7 +41,12 @@ export const Filters = ({ onSearch, onOpenFilters }: Props) => {
         >
           Filtros
         </Button>
-        <Button variant="primary" size="md" className="w-52 max-w-md">
+        <Button
+          variant="primary"
+          size="md"
+          className="w-52 max-w-md"
+          onClick={onOpenAddMovie}
+        >
           Adicionar Filme
         </Button>
       </div>

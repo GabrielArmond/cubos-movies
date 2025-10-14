@@ -1,24 +1,22 @@
-import { useRef } from 'react';
+import { type ReactNode } from 'react';
 
-interface DialogProps {
+interface SidebarProps {
   isOpen: boolean;
+  title: string;
   onClose: () => void;
-  children: React.ReactNode;
-  title?: string;
+  children: ReactNode;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   showCloseButton?: boolean;
 }
 
-export function Dialog({
+export function Sidebar({
   isOpen,
   onClose,
   children,
   title,
-  size = 'md',
   showCloseButton = true,
-}: DialogProps) {
-  const dialogRef = useRef<HTMLDivElement>(null);
-
+  size = 'sm',
+}: SidebarProps) {
   const handleBackdropClick = (event: React.MouseEvent) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -38,21 +36,18 @@ export function Dialog({
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/20 backdrop-blur-sm"
       onClick={handleBackdropClick}
-      role="dialog"
+      role="tabpanel"
       aria-modal="true"
     >
       <div
-        ref={dialogRef}
-        className={`
-          relative w-full ${sizeClasses[size]} max-h-[90vh] 
-          bg-white dark:bg-[var(--dialog-background)] 
-          rounded-lg shadow-xl 
-          transform transition-all duration-200 ease-out
-          animate-in fade-in-0 zoom-in-95
-        `}
+        className={`fixed top-0 right-0 z-40 w-full ${sizeClasses[size]} h-screen p-4 overflow-y-auto transition-transform bg-white dark:bg-[var(--dialog-background)] ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+        tabIndex={-1}
+        aria-labelledby="drawer-navigation-label"
       >
         {(title || showCloseButton) && (
-          <div className="flex items-center justify-between p-4">
+          <div className="flex items-center justify-between px-2 py-4">
             {title && (
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
                 {title}
@@ -73,10 +68,7 @@ export function Dialog({
             )}
           </div>
         )}
-
-        <div className="p-4 overflow-y-auto max-h-[calc(90vh-80px)]">
-          {children}
-        </div>
+        <div className="py-4 overflow-y-auto">{children}</div>
       </div>
     </div>
   );

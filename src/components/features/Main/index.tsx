@@ -1,12 +1,15 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Filters } from '../Filters';
 import { MoviesSection } from './Movies';
-import type { Movie } from '../../../types';
+import type { Movie, MovieDTO } from '../../../types';
 import { Dialog } from '../../ui/Dialog';
 import { Button } from '../../ui/Button';
 import { useFilterDialog } from '../../../hooks/useFilterDialog';
 import { MovieFilters, type MovieFiltersOption } from './filters';
-import { getMovies } from '../../../services/moviesService';
+import { createMovie, getMovies } from '../../../services/moviesService';
+import { useSidebar } from '../../../hooks/useSidebar';
+import { Sidebar } from '../../ui/Sidebar';
+import MovieForm from '../MovieForm';
 
 const DEFAULT_FILTERS: MovieFiltersOption = {
   genre: '',
@@ -20,6 +23,7 @@ const SEARCH_DEBOUNCE_DELAY = 500;
 export const Main = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(false);
+  const [loadingNewMovie, setLoadingNewMovie] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -33,6 +37,8 @@ export const Main = () => {
     useState<MovieFiltersOption>(DEFAULT_FILTERS);
 
   const { isOpen, closeDialog, openDialog } = useFilterDialog();
+
+  const { openSidebar, closeSidebar, isOpenSidebar } = useSidebar();
 
   const fetchMovies = useCallback(
     async (page = 1) => {
@@ -77,6 +83,10 @@ export const Main = () => {
     openDialog();
   }, [appliedFilters, openDialog]);
 
+  const handleOpenSidebar = useCallback(() => {
+    openSidebar();
+  }, [openSidebar]);
+
   const handleApplyFilters = useCallback(() => {
     setAppliedFilters(tempFilters);
     setCurrentPage(1);
@@ -110,18 +120,38 @@ export const Main = () => {
     fetchMovies(currentPage);
   }, [fetchMovies, currentPage]);
 
+  const onSubmitNewMovie = async (movie: MovieDTO) => {
+    setLoadingNewMovie(true);
+    try {
+      await createMovie(movie);
+      closeSidebar();
+      fetchMovies(1);
+    } catch (error) {
+      console.error('Erro ao criar filme:', error);
+    } finally {
+      setLoadingNewMovie(false);
+    }
+  };
+
   return (
     <main className="container mx-auto gap-2 p-4 flex-1">
       <Filters
         onSearch={handleSearch}
         onOpenFilters={handleOpenFiltersDialog}
+        onOpenAddMovie={handleOpenSidebar}
       />
-      <MoviesSection
-        loading={loading}
-        movies={movies}
-        totalPages={totalPages}
-        handlePageChange={handlePageChange}
-      />
+      {movies.length > 0 ? (
+        <MoviesSection
+          loading={loading}
+          movies={movies}
+          totalPages={totalPages}
+          handlePageChange={handlePageChange}
+        />
+      ) : (
+        <div className="flex items-center justify-center mt-20 p-5">
+          <h1 className="text-2xl">Nenhum filme disponível... :(</h1>
+        </div>
+      )}
 
       <Dialog
         isOpen={isOpen}
@@ -152,6 +182,18 @@ export const Main = () => {
           </div>
         </div>
       </Dialog>
+
+      <Sidebar
+        title="Adicionar Filme"
+        isOpen={isOpenSidebar}
+        onClose={closeSidebar}
+      >
+        <MovieForm
+          loading={loadingNewMovie}
+          onCloseSidebar={closeSidebar}
+          onSubmit={onSubmitNewMovie}
+        />
+      </Sidebar>
     </main>
   );
 };

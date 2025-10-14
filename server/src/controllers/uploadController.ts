@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import { googleCloudStorage } from '../services/googleCloudStorage';
-import { v4 as uuidv4 } from 'uuid';
 
 export const uploadImage = async (
   req: Request,
@@ -15,9 +14,25 @@ export const uploadImage = async (
       return;
     }
 
+    const { movieId, imageType } = req.body;
+
+    if (!movieId || !imageType) {
+      res.status(400).json({
+        message: 'movieId e imageType são obrigatórios',
+      });
+      return;
+    }
+
+    if (!['poster', 'backdrop'].includes(imageType)) {
+      res.status(400).json({
+        message: 'imageType deve ser "poster" ou "backdrop"',
+      });
+      return;
+    }
+
     const fileExtension = req.file.originalname.split('.').pop();
-    const fileName = `${uuidv4()}.${fileExtension}`;
-    const folder = 'movies';
+    const fileName = `${imageType}.${fileExtension}`;
+    const folder = `${movieId}`;
 
     const destination = `${folder}/${fileName}`;
     const publicUrl = await googleCloudStorage.uploadFile(

@@ -7,12 +7,10 @@ import cors from 'cors';
 
 const app = express();
 
-// Middlewares globais
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: true, credentials: true }));
 
-// Rotas
 app.use('/api/users', userRoutes);
 app.use('/api/movies', movieRoutes);
 app.use('/api/upload', uploadRoutes);

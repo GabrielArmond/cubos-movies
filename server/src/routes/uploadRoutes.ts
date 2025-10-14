@@ -4,7 +4,7 @@ import { uploadSingle } from '../middlewares/uploadMiddleware';
 
 const router = Router();
 
-router.post('/image', uploadSingle('image'), uploadImage);
+router.post('/image', uploadSingle('file'), uploadImage);
 router.delete('/:fileName', deleteImage);
 
 export default router;
