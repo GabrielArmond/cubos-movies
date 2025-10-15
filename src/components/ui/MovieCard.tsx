@@ -51,7 +51,7 @@ export const MovieCard = ({
           </div>
         )}
         {voteAverage && (
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className="absolute inset-0 -top-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             <RatingCircle rating={voteAverage * 10} size={'default'} />
           </div>
         )}
