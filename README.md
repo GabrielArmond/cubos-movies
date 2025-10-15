@@ -21,6 +21,7 @@ Uma aplicação full-stack moderna para gerenciamento de filmes, desenvolvida co
     - [Configuração do Frontend](#configuração-do-frontend)
   - [🔧 Scripts Disponíveis](#-scripts-disponíveis)
   - [🎨 Design System](#-design-system)
+  - [📧 Sistema de Email e Notificações](#-sistema-de-email-e-notificações)
   - [🔒 Autenticação e Segurança](#-autenticação-e-segurança)
   - [📱 Responsividade](#-responsividade)
   - [🌐 Deploy](#-deploy)
@@ -36,6 +37,8 @@ O **Cubos Movies** é uma aplicação completa de gerenciamento de filmes que co
 - **Gerenciamento de filmes**: CRUD completo (Create, Read, Update, Delete)
 - **Sistema de busca e filtros**: Busca por título, filtros por gênero, data, rating, etc.
 - **Upload de imagens**: Upload de posters e backdrops para Google Cloud Storage
+- **Sistema de email**: Envio de emails transacionais usando Resend
+- **Agendamento de emails**: Sistema inteligente para agendar lembretes de lançamento de filmes
 - **Interface responsiva**: Suporte completo para desktop, tablet e mobile
 - **Tema claro/escuro**: Alternância entre temas com persistência
 - **Paginação**: Navegação eficiente através de grandes listas de filmes
@@ -50,6 +53,8 @@ O projeto segue uma arquitetura **Full-Stack** moderna com separação clara ent
 - **Banco de dados**: PostgreSQL com Prisma ORM
 - **Autenticação**: JWT (JSON Web Tokens)
 - **Upload de arquivos**: Google Cloud Storage
+- **Sistema de email**: Resend API para emails transacionais
+- **Agendamento**: Node-cron para tarefas programadas
 - **Containerização**: Docker para desenvolvimento
 
 ## 🛠️ Tecnologias e Frameworks
@@ -57,15 +62,10 @@ O projeto segue uma arquitetura **Full-Stack** moderna com separação clara ent
 ### Frontend
 
 - React 19.1.1
-
 - TypeScript 5.9.3
-
 - Vite 7.1.7
-
 - TailwindCSS 4.1.14
-
 - React Router DOM 7.9.4
-
 - Axios 1.12.2
 
 ### Backend
@@ -73,20 +73,34 @@ O projeto segue uma arquitetura **Full-Stack** moderna com separação clara ent
 - Node.js com Express 5.1.0
 
 - Prisma 6.17.1
-
-- **Por que usar**: ORM (Object-Relational Mapping) de próxima geração
-- **Benefícios**:
-  - Schema declarativo
-  - Query builder intuitivo
-  - Excelente DX (Developer Experience) com Prisma Studio
-  - Fácil implementação
-  - Suporte a múltiplos bancos de dados
+  - **Por que usar**: ORM (Object-Relational Mapping) de próxima geração
+  - **Benefícios**:
+    - Schema declarativo
+    - Query builder intuitivo
+    - Excelente DX (Developer Experience) com Prisma Studio
+    - Fácil implementação
+    - Suporte a múltiplos bancos de dados
 
 - JSON Web Tokens (JWT)
-
 - Multer 2.0.2
-
 - BCrypt.js 3.0.2
+
+- **Resend**
+  - **Por que usar**: Plataforma moderna para envio de emails transacionais
+  - **Benefícios**:
+    - API simples e confiável
+    - Templates HTML personalizáveis
+    - Boa entregabilidade
+    - Métricas detalhadas
+    - Fácil integração
+
+- **Node-cron**
+  - **Por que usar**: Biblioteca para agendamento de tarefas
+  - **Benefícios**:
+    - Sintaxe cron familiar
+    - Controle de timezone
+    - Fácil cancelamento de tarefas
+    - Execução em background
 
 ### Banco de Dados
 
@@ -95,11 +109,8 @@ O projeto segue uma arquitetura **Full-Stack** moderna com separação clara ent
 ### DevOps e Ferramentas
 
 - Docker & Docker Compose
-
 - ESLint 9.36.0
-
 - Prettier 3.6.2
-
 - Google Cloud Storage
 
 ## 📦 Estrutura do Projeto
@@ -161,6 +172,8 @@ JWT_SECRET="seu-jwt-secret-super-seguro"
 GOOGLE_CLOUD_PROJECT_ID="seu-project-id"
 GOOGLE_CLOUD_KEY_FILE="caminho-para-service-account.json"
 GOOGLE_CLOUD_BUCKET_NAME="seu-bucket-name"
+RESEND_API_KEY="sua-chave-da-resend"
+FROM_EMAIL="noreply@seudominio.com"
 ```
 
 4. **Instale dependências e execute migrações**
@@ -222,6 +235,37 @@ O projeto utiliza um design system customizado construído sobre TailwindCSS:
 - **Componentes**: Biblioteca de componentes reutilizáveis (Button, Input, Card, etc.)
 - **Responsividade**: Breakpoints customizados para diferentes dispositivos
 - **Animações**: Animações suaves com CSS transitions e keyframes
+
+## 📧 Sistema de Email
+
+O projeto inclui um sistema de emails:
+
+### **Envio de Emails com Resend**
+
+- **Lembretes de filmes**: Notificações sobre lançamentos de filmes em estreia criados pelos próprios usuários.
+
+### **Agendamento Inteligente**
+
+- **Cron Jobs**: Sistema de agendamento usando node-cron
+- **Timezone Support**: Suporte a diferentes fusos horários (configurado para America/Sao_Paulo)
+- **Lembretes de lançamento**: Agendamento automático de emails no dia de lançamento dos filmes
+- **Gerenciamento de tarefas**:
+  - Cancelamento automático após envio
+  - Controle de jobs ativos
+  - Logs detalhados para monitoramento
+
+### **Funcionalidades do Sistema**
+
+- **Prevenção de spam**: Agendamento apenas para datas futuras
+- **Monitoramento**: Logs detalhados para debugging e monitoramento
+
+### **Configuração Necessária**
+
+```bash
+# Variáveis de ambiente para email
+RESEND_API_KEY="sua-chave-da-resend"
+FROM_EMAIL="noreply@seudominio.com"
+```
 
 ## 🔒 Autenticação e Segurança
 
