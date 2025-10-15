@@ -29,6 +29,7 @@ export const MoviesSection = ({
               title={movie.title}
               posterPath={movie.poster_path}
               genres={movie.genres}
+              voteAverage={movie.vote_average}
             />
           ))
         )}

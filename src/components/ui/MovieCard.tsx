@@ -6,7 +6,7 @@ interface Props {
   title: string;
   posterPath: string | null;
   genres?: string[];
-  popularity?: number;
+  voteAverage?: number;
 }
 
 export const MovieCard = ({
@@ -14,7 +14,7 @@ export const MovieCard = ({
   title,
   posterPath,
   genres,
-  popularity,
+  voteAverage,
 }: Props) => {
   const genreList = genres ?? [];
 
@@ -50,9 +50,9 @@ export const MovieCard = ({
             </div>
           </div>
         )}
-        {popularity && (
+        {voteAverage && (
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            <RatingCircle rating={popularity * 10} size={'default'} />
+            <RatingCircle rating={voteAverage * 10} size={'default'} />
           </div>
         )}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-3 lg:p-4">
