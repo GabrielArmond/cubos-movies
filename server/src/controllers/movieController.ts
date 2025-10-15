@@ -7,6 +7,7 @@ import {
   MovieDTO,
   MoviesResponse,
 } from '../models/movie';
+import { EmailSchedulerService } from '../services/emailSchedulerService';
 
 const prisma = new PrismaClient();
 
@@ -216,6 +217,21 @@ export const createMovie = async (
         indicative_rating: indicative_rating,
       },
     });
+
+    if (req.user) {
+      try {
+        await EmailSchedulerService.scheduleMovieReminderEmail(
+          newMovie.id,
+          req.user.id,
+          req.user.email,
+          req.user.name,
+          newMovie.title,
+          formattedDate,
+        );
+      } catch (emailError) {
+        console.error('Erro ao agendar e-mail de lembrete:', emailError);
+      }
+    }
 
     res.status(201).json({
       message: 'Filme criado com sucesso',

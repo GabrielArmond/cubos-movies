@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 interface Props {
   title: string;
   content: string | number;
