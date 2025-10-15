@@ -169,6 +169,7 @@ export const createMovie = async (
       budget,
       revenue,
       trailer,
+      indicative_rating,
     } = req.body;
 
     if (
@@ -178,11 +179,12 @@ export const createMovie = async (
       !budget ||
       !revenue ||
       !duration ||
-      !trailer
+      !trailer ||
+      !indicative_rating
     ) {
       res.status(400).json({
         message:
-          'Campos obrigatórios: title, overview, release_date, budget, revenue, duration, trailer',
+          'Campos obrigatórios: title, overview, release_date, budget, revenue, duration, trailer, indicative_rating',
       });
 
       return;
@@ -211,6 +213,7 @@ export const createMovie = async (
         revenue: revenue,
         profit: profit,
         trailer: trailer,
+        indicative_rating: indicative_rating,
       },
     });
 
@@ -298,6 +301,7 @@ export const updateMovie = async (
       budget,
       revenue,
       trailer,
+      indicative_rating,
     } = req.body;
 
     const existingMovie = await prisma.movie.findUnique({
@@ -337,6 +341,7 @@ export const updateMovie = async (
         ...(budget !== undefined && { budget }),
         ...(revenue !== undefined && { revenue }),
         ...(trailer !== undefined && { trailer }),
+        ...(indicative_rating !== undefined && { indicative_rating }),
         profit,
         updatedAt: new Date(),
       },

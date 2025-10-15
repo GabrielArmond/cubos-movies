@@ -34,6 +34,7 @@ export const MovieForm: React.FC<MovieFormProps> = ({
     budget: initialData.budget || 0,
     revenue: initialData.revenue || 0,
     trailer: initialData.trailer || '',
+    indicative_rating: initialData.indicative_rating || '',
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -274,6 +275,16 @@ export const MovieForm: React.FC<MovieFormProps> = ({
           value={formData.release_date}
           onChange={handleInputChange}
           error={errors.release_date}
+        />
+
+        <Input
+          label="Classificação Indicativa *"
+          name="indicative_rating"
+          type="text"
+          value={formData.indicative_rating}
+          onChange={handleInputChange}
+          error={errors.indicative_rating}
+          placeholder="Digite a classificação indicativa"
         />
       </div>
 

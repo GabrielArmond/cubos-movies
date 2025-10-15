@@ -67,7 +67,7 @@ export function Dialog({
                 <img
                   src="/src/assets/icons/close_round.svg"
                   alt="Fechar"
-                  className="h-5 w-5 dark:brightness-0 dark:invert"
+                  className="h-5 w-5 fill-current"
                 />
               </button>
             )}

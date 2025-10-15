@@ -32,12 +32,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const variants = {
       primary: [
         'bg-[var(--primary)] hover:bg-[var(--primary-hover)] active:bg-[var(--primary-active)]',
-        'text-[var(--foreground)] shadow-md hover:shadow-lg',
+        '!text-white dark:text-[var(--foreground)] shadow-md hover:shadow-lg',
         'focus-visible:ring-ring',
       ],
       secondary: [
         'bg-[var(--secondary)] hover:bg-[var(--secondary-hover)] active:bg-[var(--secondary-active)]',
-        'text-[var(--secondary-foreground)] shadow-sm hover:shadow-md',
+        '!text-white dark:text-[var(--secondary-foreground)] shadow-sm hover:shadow-md',
         'focus-visible:ring-ring',
       ],
       link: [

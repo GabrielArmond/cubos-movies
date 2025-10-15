@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { handleLogout } from '../../services/authService';
 import { Button } from '../ui/Button';
@@ -7,6 +8,21 @@ import { ThemeToggle } from '../ui/ThemeToggle';
 export function NavBar() {
   const { isLoggedIn } = useAuth();
   const { pathname } = useLocation();
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setIsDarkMode(isDark);
+    };
+
+    checkTheme();
+
+    const interval = setInterval(checkTheme, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const logout = async () => {
     try {
@@ -25,18 +41,34 @@ export function NavBar() {
       <div className="w-full flex flex-wrap items-center justify-between p-4">
         <a href="/" className="flex items-center space-x-3">
           <div className="hidden lg:block">
-            <img
-              src="/src/assets/logo-complete.svg"
-              className="h-8"
-              alt="Cubos Movies logo"
-            />
+            {isDarkMode ? (
+              <img
+                src="/src/assets/logo-complete.svg"
+                className="h-8 fill-current"
+                alt="Cubos Movies logo"
+              />
+            ) : (
+              <img
+                src="/src/assets/logo-complete-dark.svg"
+                className="h-8 fill-current"
+                alt="Cubos Movies logo"
+              />
+            )}
           </div>
           <div className="lg:hidden block">
-            <img
-              src="/src/assets/logo.svg"
-              className="h-8"
-              alt="Cubos Movies logo"
-            />
+            {isDarkMode ? (
+              <img
+                src="/src/assets/logo.svg"
+                className="h-8 fill-current"
+                alt="Cubos Movies logo"
+              />
+            ) : (
+              <img
+                src="/src/assets/logo-dark.svg"
+                className="h-8 fill-current"
+                alt="Cubos Movies logo"
+              />
+            )}
           </div>
           <span className="self-center text-lg md:text-xl font-bold whitespace-nowrap text-foreground inter">
             Movies

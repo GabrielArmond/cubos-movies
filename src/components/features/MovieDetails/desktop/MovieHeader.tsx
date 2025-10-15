@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import type { Movie } from '../../../../types/movies';
 import { formatCurrency, formatDate, formatDuration } from '../../../../utils';
 import { Button } from '../../../ui/Button';
@@ -11,6 +12,24 @@ interface MovieHeaderProps {
 }
 
 export const MovieHeader = ({ movie, onEdit, onDelete }: MovieHeaderProps) => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setIsDarkMode(isDark);
+    };
+
+    checkTheme();
+    const interval = setInterval(checkTheme, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const gradientColors = isDarkMode
+    ? 'rgba(18, 17, 19, 1) 0%, rgba(18, 17, 19, 0.8) 60%, rgba(18, 17, 19, 0) 100%'
+    : 'rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 60%, rgba(255, 255, 255, 0) 100%';
+
   return (
     <div className="w-full mx-auto relative">
       <div
@@ -18,9 +37,7 @@ export const MovieHeader = ({ movie, onEdit, onDelete }: MovieHeaderProps) => {
         style={{
           backgroundImage: `
           linear-gradient(to right,
-            rgba(18, 17, 19, 1) 0%,
-            rgba(18, 17, 19, 0.8) 60%,
-            rgba(18, 17, 19, 0) 100%)${
+            ${gradientColors})${
               movie.backdrop_path
                 ? `,
           url(${movie.backdrop_path})`
@@ -70,7 +87,12 @@ export const MovieHeader = ({ movie, onEdit, onDelete }: MovieHeaderProps) => {
         <div className="absolute top-24 right-44 flex items-center gap-6">
           <Card
             title="Classificação Indicativa"
-            content="13 anos"
+            content={
+              movie.indicative_rating === 'L' ||
+              movie.indicative_rating === 'Livre'
+                ? movie.indicative_rating
+                : `${movie.indicative_rating} anos`
+            }
             width="max-w-sm"
             textSize="text-sm"
           />

@@ -47,9 +47,9 @@ export function Sidebar({
         aria-labelledby="drawer-navigation-label"
       >
         {(title || showCloseButton) && (
-          <div className="flex items-center justify-between px-2 py-4">
+          <div className="flex items-center justify-between px-2 py-4 text-black dark:text-white">
             {title && (
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <h2 className="text-lg font-semibold text-black dark:text-white">
                 {title}
               </h2>
             )}
@@ -62,7 +62,7 @@ export function Sidebar({
                 <img
                   src="/src/assets/icons/close_round.svg"
                   alt="Fechar"
-                  className="h-5 w-5 dark:brightness-0 dark:invert"
+                  className="h-5 w-5 fill-current"
                 />
               </button>
             )}

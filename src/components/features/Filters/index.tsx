@@ -25,7 +25,7 @@ export const Filters = ({ onSearch, onOpenFilters, onOpenAddMovie }: Props) => {
             <img
               src="/src/assets/icons/search.svg"
               alt="Buscar"
-              className="h-5 w-5 dark:brightness-0 dark:invert"
+              className="h-5 w-5 fill-current"
             />
           }
           value={searchTerm}

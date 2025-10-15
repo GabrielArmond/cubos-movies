@@ -43,7 +43,7 @@ export function MovieFilters({ onHandleFilterChange, initialFilters }: Props) {
   return (
     <div className="space-y-6">
       <div>
-        <label className="block text-sm text-left font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label className="block text-sm text-left font-medium text-gray-900 dark:text-white mb-2">
           Gênero
         </label>
         <select
@@ -64,7 +64,7 @@ export function MovieFilters({ onHandleFilterChange, initialFilters }: Props) {
       </div>
 
       <div>
-        <label className="block text-sm text-left font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label className="block text-sm text-left font-medium text-gray-900 dark:text-white mb-2">
           Período de Lançamento
         </label>
         <div className="flex items-center space-x-3">
@@ -75,7 +75,7 @@ export function MovieFilters({ onHandleFilterChange, initialFilters }: Props) {
             className="flex-1"
             placeholder="Data inicial"
           />
-          <span className="text-sm text-gray-500 dark:text-gray-400">até</span>
+          <span className="text-sm text-gray-600 dark:text-gray-300">até</span>
           <Input
             type="date"
             value={filters.endDate}
@@ -87,7 +87,7 @@ export function MovieFilters({ onHandleFilterChange, initialFilters }: Props) {
       </div>
 
       <div>
-        <label className="block text-sm text-left  font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label className="block text-sm text-left font-medium text-gray-900 dark:text-white mb-2">
           Avaliação Mínima
         </label>
         <div className="flex items-center space-x-3">
@@ -101,12 +101,12 @@ export function MovieFilters({ onHandleFilterChange, initialFilters }: Props) {
             step="0.1"
             className="flex-1"
           />
-          <span className="text-sm text-gray-500 dark:text-gray-400">/ 10</span>
+          <span className="text-sm text-gray-600 dark:text-gray-300">/ 10</span>
         </div>
       </div>
 
       <div>
-        <label className="block text-sm text-left font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label className="block text-sm text-left font-medium text-gray-900 dark:text-white mb-2">
           Duração (minutos)
         </label>
         <div className="flex items-center space-x-3">
@@ -119,7 +119,7 @@ export function MovieFilters({ onHandleFilterChange, initialFilters }: Props) {
             max="999"
             className="flex-1"
           />
-          <span className="text-sm text-gray-500 dark:text-gray-400">até</span>
+          <span className="text-sm text-gray-600 dark:text-gray-300">até</span>
           <Input
             type="number"
             placeholder="Max"
@@ -129,12 +129,12 @@ export function MovieFilters({ onHandleFilterChange, initialFilters }: Props) {
             max="999"
             className="flex-1"
           />
-          <span className="text-sm text-gray-500 dark:text-gray-400">min</span>
+          <span className="text-sm text-gray-600 dark:text-gray-300">min</span>
         </div>
       </div>
 
       <div>
-        <label className="block text-sm text-left  font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label className="block text-sm text-left font-medium text-gray-900 dark:text-white mb-2">
           Ordenar por
         </label>
         <select
@@ -158,7 +158,7 @@ export function MovieFilters({ onHandleFilterChange, initialFilters }: Props) {
         filters.maxDuration ||
         filters.sortBy !== 'popularity') && (
         <div className="bg-gray-50 dark:bg-[var(--secondary)] p-4 rounded-lg">
-          <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
             Filtros Ativos:
           </h4>
           <div className="flex flex-wrap gap-2">

@@ -49,7 +49,12 @@ export const MovieDetailsMobileContent = ({
         <div className="cols-span-1 sm:col-span-2">
           <Card
             title="Class. Indicativa"
-            content="13 anos"
+            content={
+              movie.indicative_rating === 'L' ||
+              movie.indicative_rating === 'Livre'
+                ? movie.indicative_rating
+                : `${movie.indicative_rating} anos`
+            }
             textSize="text-sm"
             width="w-full"
           />
